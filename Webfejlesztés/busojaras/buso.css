@@ -42,6 +42,9 @@ q {
 
 li {
 	margin-bottom: 25px;
+	background: url(jel.png) no-repeat;
+	padding-left: 30px;
+	list-style-type: none;
 }
 
 footer{
@@ -68,4 +71,7 @@ a {
     margin-left: auto;
     margin-right: auto;
   }
+}
+#footerlink{
+	text-transform: lowercase;
 }
