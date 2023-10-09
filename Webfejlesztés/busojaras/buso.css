@@ -64,7 +64,6 @@ footer {
 }
 
 a {
-  text-transform: uppercase;
   text-decoration: none;
 }
 
@@ -76,9 +75,6 @@ a {
     margin-left: auto;
     margin-right: auto;
   }
-}
-#footerlink {
-  text-transform: lowercase;
 }
 html {
   background-color: #fff5e8;
