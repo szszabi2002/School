@@ -28,7 +28,7 @@ elif k.lower() == "nem":
     print("Sajnálatal hallom")
 else:
     print("Sajnos nem értem a válaszodat!")
-pvp = int(input("Ajd meg egy számot és megmodnom hogy páros e? "))
+pvp = int(input("Ajd meg egy számot és megmodnom hogy páros: "))
 if pvp % 2 == 0:
     print("Páros")
 else:
@@ -40,10 +40,10 @@ print(r)
 
 r = random.randint(100, 999)
 if r % 3 == 0:
-    print("Osztható 3-mal Szám ennyi volt: ", r)
+    print("Osztható 3-mal Szám ennyi volt:", r)
 elif r % 4 == 0:
-    print("Osztható 4-gyel Szám ennyi volt: ", r)
+    print("Osztható 4-gyel Szám ennyi volt:", r)
 elif r % 3 == 0 and r % 4 == 0:
-    print("Osztható 3-mal és 4-gyel is Szám ennyi volt: ", r)
+    print("Osztható 3-mal és 4-gyel is Szám ennyi volt:", r)
 else:
-    print("Sem 3-mal, sem 4-gyel nem osztható! Szám ennyi volt: ", r)
+    print("Sem 3-mal, sem 4-gyel nem osztható! Szám ennyi volt:", r)
