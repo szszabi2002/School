@@ -30,8 +30,21 @@ for i in range(100, 1000):
     if (i % 14 == 0):
         db += 1
 print(f"Ennyi darab 14 osztható 3 jegyű szám van: {db}")
-#Másik módszer
+# Másik módszer
 db = 0
 for i in range(112, 1000, 14):
     db += 1
 print(f"Ennyi darab 14 osztható 3 jegyű szám van: {db}")
+# a 3-al osztható 2 jegyű számok összege, átlaga, darabszáma
+db = 0
+osszeg = 0
+for i in range(10, 100):
+    if (i % 3 == 0):
+        db += 1
+        osszeg += i
+print(
+    f"A 3-mal osztható 2 jegyű számok összege: {osszeg}, átlaga: {osszeg/db}, darabszáma: {db}")
+# Inditunk egy űrhajót számoljunk vissza 10-tól 1-ig majd írjuk ki hogy kilővés
+for i in range(10, 0, -1):
+    print(i)
+print("Kilövés")
