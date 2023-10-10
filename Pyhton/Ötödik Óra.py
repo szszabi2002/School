@@ -16,5 +16,22 @@ for i in range(10):
 for i in range(1, 11):
     print(f"{i}. Dezső")
 
-a = int(input("Adj meg egy egész számot: "))
+# Írjuk ki a kétjegyű páros számok
+for i in range(10, 100):
+    if (i % 2 == 0):
+        print(i)
 
+for i in range(10, 100, 2):
+    print(i)
+# Hány db 14-el osztható 3 jegyű szám van?
+# Első módszer
+db = 0
+for i in range(100, 1000):
+    if (i % 14 == 0):
+        db += 1
+print(f"Ennyi darab 14 osztható 3 jegyű szám van: {db}")
+#Másik módszer
+db = 0
+for i in range(112, 1000, 14):
+    db += 1
+print(f"Ennyi darab 14 osztható 3 jegyű szám van: {db}")
