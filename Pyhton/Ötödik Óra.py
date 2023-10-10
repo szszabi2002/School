@@ -8,6 +8,9 @@
 #     ciklusváltozó in tartomány
 # A ciklus tőrzse sokszor fog lefutni
 # Írjuk ki 10 hogy Dezső
+import time
+
+
 for i in range(10):
     print("Dezső")
 # A range 1 paraméterrel (lásd fent) 0-tól a paraméter-1 fut
@@ -47,4 +50,5 @@ print(
 # Inditunk egy űrhajót számoljunk vissza 10-tól 1-ig majd írjuk ki hogy kilővés
 for i in range(10, 0, -1):
     print(i)
+    time. sleep(2)
 print("Kilövés")
