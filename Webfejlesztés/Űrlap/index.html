@@ -10,15 +10,16 @@
         <form action="#" method="get">
             <fieldset>
                 <legend>Bejelentkezési adatok</legend>
-                <label for="username">Felhasználónév:</label>
-                <input type="text" name="user" id="username" value
-                    placeholder="Ajd meg egy felhasználó nevet">
-                <label for="username">Jelszó:</label>
-                <input type="password" name="password" id="password" value
-                    placeholder="Adj meg egy jelszót">
-                <input type="submit" value="Bejelentkezés">
-                <input class="disable" type="button" value="Submit">
-                <button class="disable">Bejelentkezés</button>
+                <div>
+                    <label class="klabel" for="username">Felhasználónév:*</label>
+                    <input required type="text" name="user" id="username" value
+                        placeholder="Ajd meg egy felhasználó nevet">
+                </div>
+                <div>
+                    <label class="klabel" for="username">Jelszó:</label>
+                    <input type="password" name="password" id="password" value
+                        placeholder="Adj meg egy jelszót">
+                </div>
             </fieldset>
             <fieldset>
                 <legend>Személyes adatok</legend>
@@ -26,15 +27,15 @@
                 <input type="color" name="color" id="color"
                     onchange="document.body.style.backgroundColor = document.getElementById('color').value;">
                 <label for="hirlevel">Feliratkozik a hírlevélre?</label>
-                <input type="checkbox" name="hirlevel" id="hirlevel" checked><br>
-                <label for="neme">Neme</label><br>
+                <input type="checkbox" name="hirlevel" id="hirlevel" checked><br><br>
+                <label for="neme">Neme</label><br><br>
                 <label for="no">Nő</label>
-                <input type="radio" name="nem" id="no" value="no">
+                <input type="radio" name="nem" id="no" value="no"><br>
                 <label for="ffi">Férfi</label>
-                <input type="radio" name="nem" id="ffi" value="ffi">
+                <input type="radio" name="nem" id="ffi" value="ffi"><br>
                 <label for="stb">Stb.</label>
                 <input type="radio" name="nem" id="stb" value="stb">
-                <input type="hidden" name="rejtett" value="1"><br>
+                <input readonly type="hidden" name="rejtett" value="1"><br>
             </fieldset>
             <fieldset>
                 <legend>Egyéb</legend>
@@ -45,8 +46,18 @@
                     <option value="Tavasz">Tavasz</option>
                     <option selected value="Nyár">Nyár</option>
                     <option value="Ősz">Ősz</option>
+
+                    <input list="virag" name="kedvencviragok">
+                    <datalist id="virag">
+                        <option value="1">Poppy</option>
+                        <option value="2">Tulipán</option>
+                        <option value="3">Rózsa</option>
+                    </datalist>
                 </select>
             </fieldset>
+            <input type="submit" value="Bejelentkezés">
+            <input class="disable" type="button" value="Submit">
+            <button class="disable">Bejelentkezés</button>
         </form>
     </body>
 </html>
