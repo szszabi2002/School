@@ -12,7 +12,29 @@
         <input type="text" name="user" id="username" value="" placeholder="Ajd meg egy felhasználó nevet">
         <label for="username">Jelszó:</label>
         <input type="password" name="password" id="password" value="" placeholder="Adj meg egy jelszót">
-        <button type="button">Submit</button>
+        <input type="submit" value="Bejelentkezés">
+        <input class="disable" type="button" value="Submit">
+        <button class="disable">Bejelentkezés</button>
+        <input type="date" name="Születési év" id="date">
+        <input type="color" name="color" id="color" onchange="document.body.style.backgroundColor = document.getElementById('color').value;">
+        <label for="hirlevel">Feliratkozik a hírlevélre?</label>
+        <input type="checkbox" name="hirlevel" id="hirlevel" checked><br>
+        <label for="neme">Neme</label><br>
+        <label for="no">Nő</label>
+        <input type="radio" name="nem" id="no" value="no">
+        <label for="ffi">Férfi</label>
+        <input type="radio" name="nem" id="ffi" value="ffi">
+        <label for="stb">Stb.</label>
+        <input type="radio" name="nem" id="stb" value="stb">
+        <input type="hidden" name="rejtett" value="1"><br>
+        <textarea name="szöveg" id="szoveg" cols="100" rows="20"></textarea><br>
+        <label for="evszak">Kedvenc évszakod?</label>
+        <select name="evszak" id="evszak">
+            <option value="Tél">Tél</option>
+            <option value="Tavasz">Tavasz</option>
+            <option selected value="Nyár">Nyár</option>
+            <option value="Ősz">Ősz</option>
+        </select>
     </form>
 </body>
 </html>
