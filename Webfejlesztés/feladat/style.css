@@ -1,9 +1,8 @@
 html {
   background-color: #333;
-  
 }
 #container {
-  width: 1000px;
+  width: 900px;
   margin: auto;
   min-height: 500px;
   background-color: white;
@@ -11,7 +10,7 @@ html {
   margin: 20px;
 }
 #oldalfejlec {
-    background-color: #333;
+  background-color: #333;
 }
 .nav {
   background-color: #333;
@@ -35,10 +34,64 @@ html {
   background-color: #ddd;
   color: black;
 }
-header h1
-{
+header h1 {
   text-transform: uppercase;
   color: #ff8000;
   font-size: 60px;
   padding: 30px;
 }
+.linkjobbra {
+  float: right;
+}
+h2,
+h4 {
+  color: #ff8000;
+}
+h3 {
+  color: #ff8000;
+  font-style: italic;
+}
+a {
+  text-decoration: none;
+  color: #ff8000;
+}
+#tablediv {
+  clear: both;
+  background-color: #333;
+  padding: 10px;
+  padding-bottom: 25px;
+}
+table {
+  width: 100%;
+  padding: 25px;
+  border-collapse: collapse;
+  color: white;
+  font-size: 20px;
+}
+
+tr {
+  border-bottom: 1px solid white;
+}
+td {
+  padding: 15px;
+}
+.clr {
+  clear: both;
+}
+#dijcontainer {
+  clear: both;
+  padding-bottom: 35px;
+}
+img {
+  float: right;
+  border: black 1px solid;
+  border-radius: 360%;
+  height: 30%;
+  width: 30%;
+}
+.beljebb {
+  padding-left: 50px;
+}
+#dijcontainer p{
+    font-weight: bold;
+  }
