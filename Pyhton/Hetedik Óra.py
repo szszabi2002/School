@@ -36,5 +36,4 @@ for i in range(100, 999):
     if i % 17 == 0:
         db += 1
         összeg += i
-result = db / összeg * 100
-print("{:.2f}".format(result))
+print(összeg/db)
