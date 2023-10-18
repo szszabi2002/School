@@ -1,0 +1,97 @@
+Programozók országos online versenye
+- szabadulj be a gépek világába!
+
+
+A verseny
+
+A C#ntiCup verseny a programozók új, országos online versenye. A selejtezőben egy online szabadulószobából kell kijutni kreatív feladatok megoldása által, az elődöntő és döntő során már belekóstolhattok a verseny kiírója, a Continental világába, a megírt programotokkal (nyelvfüggetlenül szabad programozni) irányíthattok gépeket, és versenyezhettek egymás ellen.
+
+3 fős csapatokat várunk, a csapattagok állhatnak hallgatókból (akár különböző intézményből is), illetve frissen végzett diplomásokból is.
+
+A ContiCup szakmai feladatait a verseny kiírója, a Continental által kreatív feladatok és programozási feladatok adják.
+
+A verseny 3 fordulóból áll. A selejtező online történik, egy online virtuális szabadulószobából kell kijutni, melyen minden csapat részt vesz. A kijutott csapatok az online elődöntőbe kerülnek, ahol már a döntőre készülve, programozási feladatok várnak rájuk. A verseny élő döntőjébe a legjobb 10 csapat jut tovább.
+
+Döntőben előzetes felkészülést igénylő és a helyszínen kihirdetett feladatok egyaránt várnak a játékosokra.
+
+Online Selejtező - szabadulószoba
+
+Az online selejtezőn egy virtuális szabadulószobából kell kijutni, három szoba lesz, ahol különböző nehézségű kreatív logikai, matematikai feladatok lesznek, amelyek megoldásai adják majd a kijutás kulcsát.
+
+A feladatokat nyelvfüggetlenül meg lehet majd oldani, a programnyelv választását Rátok bízzuk. Arra figyeljetek, hogy a későbbiekben viszont már C#-ban kell programozni.
+
+Minden kijutó csapat részt vesz az online elődöntőn.
+
+Fontos, hogy egyszerre csak egy csapattag legyen bejelentkezve, mivel, mint csapat hoztok döntést!
+
+A pontos időzítést itt találjátok.
+
+Online elődöntő
+
+Az online elődöntőbe a szabadulószobából kijutott csapatok jutnak.
+
+Itt már programozási feladatok várnak Rátok. Annyit elárulhatunk, a döntős feladatokra lesz lehetőség felkészülni, hogy ne élőben találkozzatok először a megoldandó feladatokkal.
+
+A pontos feladatot, és dokumentációt az elődöntő kezdetekor fogunk publikálni, a témakör pedig adott, a C#ntiCup Programozóverseny kiírója, a Continental Automotive világába kóstolhattok bele.
+
+A legjobb 10 csapat bejut a döntőbe.
+
+Döntő
+
+A döntőbe jutott csapatoknak az elődöntős feladatokra adott megoldásaikat kell tökéletesíteni, illetve egy kis versenyhelyzetet is teremtünk majd a csapatok között.
+
+A döntő élőben zajlik a budapesti telephelyünkön, a legjobb 10 csapat között.
+
+Az oldal tetejére
+
+
+Időzítés
+
+Jelentkezési határidő:	2017. április 3. éjfél
+Online selejtező:	2017. április 8. - április 20.
+Online elődöntő:	2017. április 21. - május 1.
+Élő döntő:	2017 május 12.
+Az oldal tetejére
+
+
+
+Díjak
+1. helyezett:
+
+3x 150 000 Forint értékű vásárlási utalvány
+2. helyezett:
+
+3x 100 000 Forint értékű vásárlási utalvány
+3. helyezett:
+
+3x 50 000 Forint értékű vásárlási utalvány
+Az oldal tetejére
+
+
+
+
+
+Regisztráció
+
+Csapat adatai
+Csapat neve:  
+Csapat neve
+1. csapattag neve:  
+ Születési dátuma:   
+2. csapattag neve
+ Születési dátuma:    
+3. csapattag neve
+ Születési dátuma:  
+ Kapcsolat
+Csapat e-mail címe  
+Csapat telefonos elérhetősége  
+ Bejelentkezési adatok
+Felhasználónév:   
+Jelszó:   
+Jelszó megerősítése:   
+Az oldal tetejére
+
+
+
+
+Készítette: Saját Név

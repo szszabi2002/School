@@ -4,17 +4,20 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="style.css" />
-        <title>Document</title>
+        <title>Programozók országos online versenye - szabadulj be a gépek
+            világába!</title>
     </head>
     <body>
         <div id="container">
             <header id="oldalfejlec">
-                <nav class="nav">
-                    <a class="active" href="#container">Főoldal</a>
-                    <a href="#verseny">A verseny</a>
-                    <a href="#idozites">Időzítés</a>
-                    <a href="#">Díjak</a>
-                    <a href="#">Regísztráció</a>
+                <nav id="fomenu">
+                    <ul>
+                        <li><a class="active" href="#container">Főoldal</a></li>
+                        <li><a href="#verseny">A verseny</a></li>
+                        <li><a href="#idozites">Időzítés</a></li>
+                        <li><a href="#dijcontainer">Díjak</a></li>
+                        <li><a href="#reg">Regísztráció</a></li>
+                    </ul>
                 </nav>
                 <h1>
                     Programozók országos online versenye - szabadulj be a gépek
@@ -118,7 +121,7 @@
                     10 csapat
                     között.
                 </p>
-                <a class="linkjobbra" href="#container">Az oldal tetejére</a>
+                <a class="linkjobbra clr" href="#container">Az oldal tetejére</a>
                 <div id="tablediv">
                     <h2 id="idozites">Időzítés</h2>
 
@@ -140,20 +143,72 @@
                             <td>2017 május 12.</td>
                         </tr>
                     </table>
-                    <a class="linkjobbra" href="#container">Az oldal tetejére</a>
+                    <a class="linkjobbra clr" href="#container">Az oldal
+                        tetejére</a>
                 </div>
-                <div class="clr" id="dijcontainer">
+                <div id="dijcontainer">
                     <img src="kepek/award1.jpg" alt="Díj" title="Díj">
                     <h2>Díjak</h2>
                     <h4 class="beljebb">1. helyezett:</h4>
-                    <p class="beljebb">3x 150 000 Forint értékű vásárlási utalvány</p>
+                    <p class="beljebb">3x 150 000 Forint értékű vásárlási
+                        utalvány</p>
                     <h4 class="beljebb">2. helyezett:</h4>
-                    <p class="beljebb">3x 100 000 Forint értékű vásárlási utalvány</p>
+                    <p class="beljebb">3x 100 000 Forint értékű vásárlási
+                        utalvány</p>
                     <h4 class="beljebb">3. helyezett:</h4>
-                    <p class="beljebb">3x 50 000 Forint értékű vásárlási utalvány</p>
+                    <p class="beljebb">3x 50 000 Forint értékű vásárlási
+                        utalvány</p>
                     <a class="linkjobbra" href="#container">Az oldal tetejére</a>
                 </div>
             </main>
+            <div id="reg">
+                <h2>Regisztráció</h2>
+                <form action="#" method="get">
+                    <fieldset>
+                        <legend>Csapat adatai</legend>
+                        <label for="neve">Csapat neve:</label>
+                        <input type="text" name="neve" placeholder="Csapat neve" /><br><br>
+                        <label for="1cstag">1. csapattag neve:</label>
+                        <input type="text" name="1cstag"
+                            placeholder="1. csapattag neve" />
+                        <label for="1csszul">Születési dátuma:</label>
+                        <input type="date" name="1csszul"><br><br>
+                        <label for="2cstag">1. csapattag neve:</label>
+                        <input type="text" name="2cstag"
+                            placeholder="2. csapattag neve" />
+                        <label for="2csszul">Születési dátuma:</label>
+                        <input type="date" name="2csszul"><br><br>
+                        <label for="3cstag">1. csapattag neve:</label>
+                        <input type="text" name="3cstag"
+                            placeholder="3. csapattag neve" />
+                        <label for="3csszul">Születési dátuma:</label>
+                        <input type="date" name="3csszul"><br><br>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Kapcsolat</legend>
+                        <label for="email">Csapat e-mail címe:</label>
+                        <input type="email" name="email" /><br><br>
+                        <label for="telefonszam">Csapat telefonos elérhetősége:</label>
+                        <input type="tel" name="telefonszam" /><br><br>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Bejelentkezési adatok</legend>
+                        <label for="belelos">Felhasználónév:</label>
+                        <input type="text" name="belelos"
+                            placeholder="Felhasználónév" /><br><br>
+                        <label for="passwd">Jelszó:</label>
+                        <input type="password" name="passwd" /><br><br>
+                        <label for="passwd2">Jelszó megerősítése:</label>
+                        <input type="password" name="passwd2" /><br><br>
+                    </fieldset>
+                    <button type="reset" class="btn btn-primary">Visszaállítás</button>
+                    <button type="submit">Elküldés</button>
+                </form>
+                <a class="linkjobbra" href="#container">Az oldal tetejére</a>
+                <footer>
+                    Készítette: Szincsák Szabolcs
+                </footer>
+            </div>
         </div>
     </body>
 </html>
