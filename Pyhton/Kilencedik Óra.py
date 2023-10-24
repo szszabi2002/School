@@ -50,3 +50,24 @@ print(nev[-1])
 
 # Írjuk ki q z betűt és az i betűt
 print(nev[-3], nev[1])
+# Részeket is kiemelhetünk a lístából
+print(nev[1:3])
+# Írjuk ki a KISS és a Dezsőt indexekel
+print(nev[0:4])
+print(nev[5:10])
+
+# print(nev[11])
+# Írjuk ki hogy a s De
+print(nev[3:7])
+
+print(nev[:4])  # elejétől a 3 indexig
+
+print(nev[5:])  # 5 indextől a végéig
+
+# Kiírjuk minden 2. 3. n-dik elemet is minetha ciklussal írnm ki
+# ennek a jele a ::
+
+print(nev[0::2])
+
+# írjuk ki at összes páros elemet
+print(nev[1::2])
