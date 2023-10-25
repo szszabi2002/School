@@ -1,0 +1,74 @@
+body {
+  display: grid;
+  grid-template-areas:
+    "fejléc fejléc fejléc"
+    "menű tartalom egyéb"
+    "reklámok tartalom egyéb"
+    "lábléc lábléc lábléc";
+  grid-template-columns: 18% 1fr 20%;
+  grid-template-rows: 80px 50vh 50vh 70px;
+  gap: 1px;
+  height: 100vh;
+  margin: 0;
+}
+#fejléc {
+  grid-area: fejléc;
+  background-image: linear-gradient(lightgoldenrodyellow, lightgray);
+}
+#lábléc {
+  grid-area: lábléc;
+  background-image: linear-gradient(lightgray, lightgoldenrodyellow);
+}
+#tartalom {
+  grid-area: tartalom;
+  background-image: linear-gradient(lightgray, gray, lightgray);
+}
+#menű {
+  grid-area: menű;
+  background-image: linear-gradient(lightgray, gray);
+}
+#reklámok {
+  grid-area: reklámok;
+  background-image: linear-gradient(gray, lightgray);
+}
+#egyéb {
+  grid-area: egyéb;
+  background-image: linear-gradient(lightgray, gray, lightgray);
+}
+header,
+footer,
+nav,
+div,
+article {
+  padding: 10px;
+  color: white;
+  text-shadow: 1px 1px black;
+}
+@media all and (max-width: 1024px) {
+  body {
+    display: grid;
+    grid-template-areas:
+      "fejléc fejléc"
+      "menű menű"
+      "tartalom reklámok"
+      "tartalom egyéb"
+      "lábléc lábléc";
+    grid-template-rows: 80px 70px 1fr 1fr 70px;
+    grid-template-columns: 1fr 30%;
+  }
+}
+
+@media all and (max-width: 600px) {
+  body {
+    display: grid;
+    grid-template-areas:
+      "fejléc"
+      "menű"
+      "reklámok"
+      "tartalom"
+      "egyéb"
+      "lábléc";
+    grid-template-rows: 80px 70px 150px 1fr 150px 70px;
+    grid-template-columns: 100vh;
+  }
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Testtömegindex számoló</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css.css" rel="stylesheet" type="text/css">
+    <script src="js.js"></script>
+</head>
+
+<body>
+    <div>
+        <p>Testtömeg index számoló</p>
+        <table>
+            <tr>
+                <td><label for="Testsúlyod:">Testsúlyod:</label></td>
+                <td><input type="number" name="testsuly" id="testsuly" onkeyup="szamol()" /> kg</td>
+            </tr>
+            <tr>
+                <td><label for="Magasságod:">Magasságod:</label></td>
+                <td><input type="number" name="magassag" id="magassag" onkeyup="szamol()" /> cm</td>
+            </tr>
+            <tr>
+                <td><label for="Testtömegindexed:">Testtömegindexed:</label></td>
+                <td><input type="number" name="bmi" id="bmi" /> kg / m<sup>2</sup></td>
+            </tr>
+            <tr id="sulytoblet">
+                <td><label for="Súlytöbblet:">Súlytöbblet:</label></td>
+                <td><input type="number" name="sulyt" id="sulyt" /> <b>kg</b></td>
+            </tr>
+        </table>
+    </div>
+</body>

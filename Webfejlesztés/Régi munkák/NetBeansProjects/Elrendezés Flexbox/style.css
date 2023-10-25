@@ -1,0 +1,40 @@
+html {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.FlexContainer {
+  display: flex;
+  counter-reset: items;
+  flex-flow: column wrap;
+  height: 650px;
+  align-content: space-between;
+}
+.FlexItem {
+  /*height: 100px;
+    width: 400px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 100px;
+    flex: 2 1 100px;*/
+  width: 20%;
+  padding: 10px;
+  background-color: aquamarine;
+  border: #009999 solid 1px;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px lightgrey, 0 4px 4px lightgrey;
+}
+
+.FlexContainer::before,
+.FlexContainer::after {
+  content: "";
+  flex-basis: 100%;
+  width: 5px;
+  order: 2;
+}

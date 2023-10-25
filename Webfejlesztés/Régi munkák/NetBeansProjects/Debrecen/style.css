@@ -1,0 +1,48 @@
+.card:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+.card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.card {
+  width: 100%;
+  height: 100vh;
+}
+nav {
+  background-color: greenyellow;
+}
+#fekete {
+  color: black;
+}
+img:hover {
+  cursor: pointer;
+}
+.card {
+  position: relative;
+}
+.card img#rejtetkep {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.card:hover img#rejtetkep {
+  opacity: 1;
+}
+.card img#easteregg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
