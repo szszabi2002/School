@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stilus.css">
+    <title>Szállodai ajánlatkérő űrlap</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Szállodai ajánlat kérése</h1>
+        <form action="#" method="get">
+            <fieldset>
+                <legend>Szoba adatai</legend>
+                <div>
+                    <label class="klabel" for="sztipus">Szoba típusa<span class="required">*</span>:</label><br>
+                    <select name="rtype" id="rtype">
+                        <option selected value="StandardR">Standard szoba</option>
+                        <option value="SuperiorR">Superior szoba</option>
+                        <option value="DeluxR">Deluxe szoba</option>
+                    </select>
+                </div>
+                <div>
+                    <br><label class="klabel" for="erkezesd">Érkezés dátuma<span class="required">*</span>:</label>
+                    <input type="date" name="erkezesd" id="erkezesd">
+                    <br><label class="klabel" for="erkezesd">Távozás dátuma<span class="required">*</span>:</label>
+                    <input type="date" name="erkezesd" id="erkezesd">
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Személyes adatok</legend>
+                <input type="date" name="Születési év" id="date">
+                <input type="color" name="color" id="color" onchange="document.body.style.backgroundColor = document.getElementById('color').value;">
+                <label for="hirlevel">Feliratkozik a hírlevélre?</label>
+                <input type="checkbox" name="hirlevel" id="hirlevel" checked><br><br>
+                <label for="neme">Neme</label><br><br>
+                <label for="no">Nő</label>
+                <input type="radio" name="nem" id="no" value="no"><br>
+                <label for="ffi">Férfi</label>
+                <input type="radio" name="nem" id="ffi" value="ffi"><br>
+                <label for="stb">Stb.</label>
+                <input type="radio" name="nem" id="stb" value="stb">
+                <input readonly type="hidden" name="rejtett" value="1"><br>
+            </fieldset>
+            <fieldset>
+                <legend>Extrák</legend>
+
+            </fieldset>
+                <button type="reset">Adatok törlése</button>
+                <button type="submit">Ajánlat kérése</button>
+            <br><br>
+            A <span class="required">*</span>-al jelölt mezők kitöltése kötelező!
+        </form>
+    </div>
+</body>
+
+</html>
