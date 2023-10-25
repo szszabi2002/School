@@ -61,22 +61,24 @@
             </fieldset>
             <fieldset>
                 <legend>Személyes adatok</legend>
-                <input type="date" name="Születési év" id="date">
-                <input type="color" name="color" id="color" onchange="document.body.style.backgroundColor = document.getElementById('color').value;">
-                <label for="hirlevel">Feliratkozik a hírlevélre?</label>
-                <input type="checkbox" name="hirlevel" id="hirlevel" checked><br><br>
-                <label for="neme">Neme</label><br><br>
-                <label for="no">Nő</label>
-                <input type="radio" name="nem" id="no" value="no"><br>
-                <label for="ffi">Férfi</label>
-                <input type="radio" name="nem" id="ffi" value="ffi"><br>
-                <label for="stb">Stb.</label>
-                <input type="radio" name="nem" id="stb" value="stb">
-                <input readonly type="hidden" name="rejtett" value="1"><br>
+                <label for="vezeteknev">Vezetéknév<span class="required">*</span>:</label><br/>
+                <input required type="text" name="vezeteknev" id="vezeteknev" placeholder="Vezetéknév">
+                <label for="keresztnev">Keresztnév<span class="required">*</span>:</label><br/>
+                <input required type="text" name="keresztnev" id="keresztnev" placeholder="Keresztnév"><br/>
+                <label for="email">E-mail<span class="required">*</span>:</label><br/>
+                <input required type="email" name="email" id="email" placeholder="user@domain.com"><br/>
+                <label for="telefon">Telefonszám<span class="required">*</span>:</label><br/>
+                <input required type="tel" name="telefon" id="telefon" placeholder="+36-12/1234567"><br/><br/>
+
             </fieldset>
             <fieldset>
                 <legend>Extrák</legend>
-
+                <input type="checkbox" name="korai" id="korai">
+                <label for="korai">Korai érkezés (12:00)</label>
+                <input type="checkbox" name="kesei" id="kesei">
+                <label for="kesei">Kései távozás (12:00)</label><br><br>
+                <label for="szöveg">Megjegyzés</label><br>
+                <textarea name="szöveg" id="szoveg" cols="45" rows="10"></textarea><br>
             </fieldset>
             <button type="reset">Adatok törlése</button>
             <button type="submit">Ajánlat kérése</button>
