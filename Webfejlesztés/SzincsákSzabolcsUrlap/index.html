@@ -16,17 +16,47 @@
                 <legend>Szoba adatai</legend>
                 <div>
                     <label class="klabel" for="sztipus">Szoba típusa<span class="required">*</span>:</label><br>
-                    <select name="rtype" id="rtype">
+                    <select required name="rtype" id="rtype">
                         <option selected value="StandardR">Standard szoba</option>
                         <option value="SuperiorR">Superior szoba</option>
                         <option value="DeluxR">Deluxe szoba</option>
                     </select>
                 </div>
-                <div>
-                    <br><label class="klabel" for="erkezesd">Érkezés dátuma<span class="required">*</span>:</label>
-                    <input type="date" name="erkezesd" id="erkezesd">
-                    <br><label class="klabel" for="erkezesd">Távozás dátuma<span class="required">*</span>:</label>
-                    <input type="date" name="erkezesd" id="erkezesd">
+                <div class="szadatai">
+                    <table>
+                        <tr>
+                            <td>
+                                <label class="klabel" for="erkezesd">Érkezés dátuma<span class="required">*</span>:</label><br>
+                            </td>
+                            <td>
+                                <label class="klabel" for="erkezesd">Távozás dátuma<span class="required">*</span>:</label><br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input required type="date" name="erkezesd" id="erkezesd">
+                            </td>
+                            <td>
+                                <input required type="date" name="erkezesd" id="erkezesd">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="felszam">Felnőttek száma<span class="required">*</span>:</label><br />
+                            </td>
+                            <td>
+                                <label for="gyekszam">Gyermekek száma<span class="required">*</span>:</label><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input required type="number" name="felszam" id="felszam" value="1" min="1">
+                            </td>
+                            <td>
+                                <input required type="number" name="gyekszam" id="gyekszam" value="0" min="0">
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </fieldset>
             <fieldset>
@@ -48,8 +78,8 @@
                 <legend>Extrák</legend>
 
             </fieldset>
-                <button type="reset">Adatok törlése</button>
-                <button type="submit">Ajánlat kérése</button>
+            <button type="reset">Adatok törlése</button>
+            <button type="submit">Ajánlat kérése</button>
             <br><br>
             A <span class="required">*</span>-al jelölt mezők kitöltése kötelező!
         </form>
