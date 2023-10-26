@@ -1,0 +1,33 @@
+.container {
+  width: 400px;
+  margin: auto;
+  border: 1px black solid;
+  padding: 5px;
+  display: grid;
+}
+h1 {
+  text-align: center;
+}
+legend {
+  font-size: 120%;
+  font-weight: bold;
+}
+.required {
+  color: red;
+  vertical-align: super;
+}
+input,
+select {
+  width: 100%;
+}
+button {
+  width: 45%;
+  margin-left: 12px;
+  margin-top: 5px;
+}
+.szadatai {
+  display: inline-block;  
+}
+.szadatai td{
+    padding-right: 45px;
+}

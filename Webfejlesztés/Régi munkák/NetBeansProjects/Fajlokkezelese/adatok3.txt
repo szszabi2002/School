@@ -1,0 +1,1 @@
+[{"cim":"Passi\u00f3","rendezo":"Mel Gibson","ev":"2004","szereplok":["Jim Caviezel","Maia Morgenstern","Christo Jivkov"]},{"cim":"Pio atya - A csod\u00e1k embere","rendezo":"Carlo Carlei","ev":"2000","szereplok":["Sergio Castellitto","Sergio Albelli"]}]

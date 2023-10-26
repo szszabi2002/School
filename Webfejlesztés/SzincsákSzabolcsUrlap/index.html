@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stilus.css">
+    <title>Szállodai ajánlatkérő űrlap</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Szállodai ajánlat kérése</h1>
+        <form action="#" method="get">
+            <fieldset>
+                <legend>Szoba adatai</legend>
+                <div>
+                    <label class="klabel" for="sztipus">Szoba típusa<span class="required">*</span>:</label><br>
+                    <select required name="rtype" id="rtype">
+                        <option selected value="StandardR">Standard szoba</option>
+                        <option value="SuperiorR">Superior szoba</option>
+                        <option value="DeluxR">Deluxe szoba</option>
+                    </select>
+                </div>
+                <div class="szadatai">
+                    <table>
+                        <tr>
+                            <td>
+                                <label class="klabel" for="erkezesd">Érkezés dátuma<span class="required">*</span>:</label><br>
+                            </td>
+                            <td>
+                                <label class="klabel" for="erkezesd">Távozás dátuma<span class="required">*</span>:</label><br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input required type="date" name="erkezesd" id="erkezesd">
+                            </td>
+                            <td>
+                                <input required type="date" name="erkezesd" id="erkezesd">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="felszam">Felnőttek száma<span class="required">*</span>:</label><br />
+                            </td>
+                            <td>
+                                <label for="gyekszam">Gyermekek száma<span class="required">*</span>:</label><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input required type="number" name="felszam" id="felszam" value="1" min="1">
+                            </td>
+                            <td>
+                                <input required type="number" name="gyekszam" id="gyekszam" value="0" min="0">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Személyes adatok</legend>
+                <label for="vezeteknev">Vezetéknév<span class="required">*</span>:</label><br/>
+                <input required type="text" name="vezeteknev" id="vezeteknev" placeholder="Vezetéknév">
+                <label for="keresztnev">Keresztnév<span class="required">*</span>:</label><br/>
+                <input required type="text" name="keresztnev" id="keresztnev" placeholder="Keresztnév"><br/>
+                <label for="email">E-mail<span class="required">*</span>:</label><br/>
+                <input required type="email" name="email" id="email" placeholder="user@domain.com"><br/>
+                <label for="telefon">Telefonszám<span class="required">*</span>:</label><br/>
+                <input required type="tel" name="telefon" id="telefon" placeholder="+36-12/1234567"><br/><br/>
+
+            </fieldset>
+            <fieldset>
+                <legend>Extrák</legend>
+                <input type="checkbox" name="korai" id="korai">
+                <label for="korai">Korai érkezés (12:00)</label>
+                <input type="checkbox" name="kesei" id="kesei">
+                <label for="kesei">Kései távozás (12:00)</label><br><br>
+                <label for="szöveg">Megjegyzés</label><br>
+                <textarea name="szöveg" id="szoveg" cols="45" rows="10"></textarea><br>
+            </fieldset>
+            <button type="reset">Adatok törlése</button>
+            <button type="submit">Ajánlat kérése</button>
+            <br><br>
+            A <span class="required">*</span>-al jelölt mezők kitöltése kötelező!
+        </form>
+    </div>
+</body>
+
+</html>
