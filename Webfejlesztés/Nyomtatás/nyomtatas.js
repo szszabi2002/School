@@ -8,10 +8,8 @@ function kalkulal() {
     let koltseg = terulet * papir;
     let papirkoltseg = koltseg/terulet;
     //Megjelenítés
-    document.getElementById('valasz').style.visibility = "visible";
     document.getElementById("koltseg").innerHTML = koltseg;
     document.getElementById("terulet").innerHTML = terulet;
     document.getElementById("papir").innerHTML = papirkoltseg;
+    document.getElementById('valasz').style.visibility = "visible";
 }
-
-

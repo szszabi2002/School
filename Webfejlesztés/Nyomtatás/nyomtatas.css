@@ -3,13 +3,11 @@ body{
 }
 
 .bg-fej {
+  background-image: url('drukletters.jpg');
   background-position: center;
   height: 250px;
   padding-top: 75px;
-  background-image: url(drukletters.jpg);
-  margin-top: 0px;
-  margin-bottom: 15px;
-  margin: auto;
+  margin: 0px auto 15px;
 }
 
 .bg-fej h1{
