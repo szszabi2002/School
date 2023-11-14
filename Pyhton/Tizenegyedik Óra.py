@@ -6,6 +6,11 @@ def mondatszavak(m):
     print(f"A mondatban {len(m.split())} szót tartalmaz.")
 
 
+def mondatszavak1(m):
+    reszek = m.split(" ")
+    return len(reszek)
+
+
 # Nem előírt lépésszámú előltesztelő ciklus: While
 # szintaktikailag while logikai kiértékelés: ciklustörzs
 # csak akkor lép a ciklustörzsbe, ha a kiértékelés eredménye Igaz
@@ -85,3 +90,8 @@ koszont("Csoki manó és társai")
 # Kérjük be egy mondatot és írjuk ki hány szóból áll függvényel
 mondatok = input("Kérek egy mondatot: ")
 mondatszavak(mondatok)
+
+# Nezzünk olyan fv, ami a hívás helyére vissza ad értéket és ezt az értéket ott kell feldolgoznunk
+
+# Folytassuk az előző példát annyi külömbséggel hogy a fv nem írja ki a szavak számát hanem a hívás helyán kell gondoskodni róla
+print(f"A mondat szavainak száma: {mondatszavak1(mondatok)}")
