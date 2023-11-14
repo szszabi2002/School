@@ -1,3 +1,11 @@
+def koszont(n):
+    print(f"Szia kedves {n}")
+
+
+def mondatszavak(m):
+    print(f"A mondatban {len(m.split())} szót tartalmaz.")
+
+
 # Nem előírt lépésszámú előltesztelő ciklus: While
 # szintaktikailag while logikai kiértékelés: ciklustörzs
 # csak akkor lép a ciklustörzsbe, ha a kiértékelés eredménye Igaz
@@ -62,3 +70,18 @@ print(f"Az ötödik szó harmadik karaktere: {szavak[4][2]}")
 print(f"A harmadik szó páratlan számú karaktere: {szavak[2][::2]}")
 
 # Függvények
+# A gyakkran végrehajtandó müveleteket szervezzünk ki függvényekbe, segítségükkel sokkal általábban és szerkeszthetőbb lesz a kód
+# Kulcss szava: DEF (def)
+# A fv-nek vagy van visszatérési értéke, ekkor kell kell RETURN visszatérési értéke, ekkor általábban kiírunk valamit
+# A fv-et általábban a program ELEJÉN helyezzük el ez nem kötelező de erősen ajánlot
+# fv-ek vannak paraméterei is
+# Kérjük be a felhasználó nevét majd kösszöntsük függvény segítségével
+nev = input("Kérem adjon nevet:")
+# A fv meghícása a nevének a begépelésével és a paraméter átadássával történik
+print(nev)
+koszont("Jolán")
+koszont("Rozál")
+koszont("Csoki manó és társai")
+# Kérjük be egy mondatot és írjuk ki hány szóból áll függvényel
+mondatok = input("Kérek egy mondatot: ")
+mondatszavak(mondatok)
