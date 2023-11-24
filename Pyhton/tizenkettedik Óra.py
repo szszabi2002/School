@@ -40,3 +40,15 @@ print()
 print(szamok)
 # Lista törlése II. létrehuzunk azonos névvel egy új üres listát
 szamok = []
+
+
+# Hozzunk létre egy fv.-t ami kiírja 2 szám összegét és külömbségét a paraméter cs a fv. törzsében létezik
+# Ez a kód elejére kerül
+def muvelet(x, y):
+    print(f"{x} + {y} = {x+y}")
+    print(f"{x} - {y} = {x-y}")
+
+
+muvelet(10, 2)
+muvelet(8, 11)
+muvelet(7, 3)
