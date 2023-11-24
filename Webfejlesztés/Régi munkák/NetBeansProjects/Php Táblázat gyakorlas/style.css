@@ -1,0 +1,9 @@
+td{
+    margin: 5px;
+    padding: 5px;
+    color: black;
+    background-color: lightcyan;
+    border:  green solid 2px;
+    text-align: center;
+    font-style: italic;
+}

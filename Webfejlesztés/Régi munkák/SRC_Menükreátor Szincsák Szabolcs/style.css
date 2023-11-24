@@ -1,0 +1,63 @@
+html {
+  color: darkred;
+  background-image: url("hatter.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: "Comic Sans MS";
+}
+body {
+  margin: 0 auto;
+  text-align: center;
+}
+select {
+  background-color: silver;
+  width: 150px;
+  padding: 1px;
+  color: darkred;
+  margin-top: 20px;
+  font-weight: bold;
+}
+table {
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  border: 2px solid darkred;
+  padding: 10px;
+}
+th {
+  font-size: 14px;
+}
+table select {
+  width: 200px;
+  color: darkred;
+  font-weight: bold;
+}
+input {
+  background-color: silver;
+  width: 150px;
+  padding: 10px;
+  color: darkred;
+  margin-top: 20px;
+  font-weight: bold;
+}
+#tablazat {
+  border-collapse: collapse;
+  border: 2px solid darkred;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: "Comic Sans MS";
+  padding: 10px;
+}
+#tablazat td {
+  border: 1px solid darkred;
+  padding: 20px;
+}
+#tablazat th {
+  border: 1px solid darkred;
+  padding: 20px;
+}

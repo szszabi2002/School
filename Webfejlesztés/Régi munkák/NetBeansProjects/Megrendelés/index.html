@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megrendelés</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js.js"></script>
+</head>
+
+<body>
+    <div class="hatter">
+        <div>
+            <h1>Megrendelés</h1>
+            <p>Jelöld be azokat az anyagokat, amiket meg szeretnél rendelni! Ha CD/DVD-n kéred az anyagokat, lemezenként
+                +500 Ft az anyagköltséget számítunk fel.</p>
+            <table>
+                <tr>
+                    <th>Az anyag megnevezése</th>
+                    <th>Listaára</th>
+                    <th>Megrendelés</th>
+                </tr>
+                <tr>
+                    <td>Weblapok készítése a Dreamweaver használata</td>
+                    <td>4500 Ft</td>
+                    <td><input type="checkbox" id="cb1" onchange="Szamol()"></td>
+                </tr>
+                <tr>
+                    <td>PHP és MySQL programozás haladó szinten</td>
+                    <td>7400 Ft</td>
+                    <td><input type="checkbox" id="cb2" onchange="Szamol()"></td>
+                </tr>
+                <tr>
+                    <td>Póker kezdőknek - Texas hold'em</td>
+                    <td>3700 Ft</td>
+                    <td><input type="checkbox" id="cb3" onchange="Szamol()"></td>
+                </tr>
+                <tr>
+                    <td>Bűvésztrükkök nomál kártyapakli használatával</td>
+                    <td>3500 Ft</td>
+                    <td><input type="checkbox" id="cb4" onchange="Szamol()"></td>
+                </tr>
+                <tr>
+                    <td>Windows 7 operációs rendszer használata kezdőknek</td>
+                    <td>4100 Ft</td>
+                    <td><input type="checkbox" id="cb5" onchange="Szamol()"></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <p>Letöltöd az anyagokat, vagy CD/DVD-n kéred őket</p>
+            <input type="radio" name="valasztas" id="letolt" onchange="Szamol()"><label for="Letöltöm">Letöltöm</label>
+            <input type="radio" name="valasztas" id="lemez" onchange="Szamol()"><label for="Lemezen kérem (+500 Ft/lemez)">Lemezen kérem
+                (+500 Ft/lemez)</label>
+            <h2>FIZETENDŐ ÖSSZEG: <span id="piros"><span id="eredmeny">0</span> Ft</h2></span>
+        </div>
+        <div id="urlap">
+            <p>Kérlek add meg a rendeléshez szükséges adataidat:</p>
+            <label for="Név:">Név:</label><input type="text" name="nev" id="nev"><br>
+            <label for="E-mail:">E-mail:</label><input type="text" name="email" id="email"><br>
+            <span id="hidden"><label for="Postacím:">Postacím:</label><input type="text" name="posta" id="posta"></span><br><br>
+            <input type="submit" value="Kattints ide a megrendelés elküldéséhez!">
+        </div>
+    </div>
+</body>
+
+</html>

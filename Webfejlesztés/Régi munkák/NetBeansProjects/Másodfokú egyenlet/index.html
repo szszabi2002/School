@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <title>Másodfokú egyenlet</title>
+    <meta charset="UTF-16" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css.css" rel="stylesheet" type="text/css" />
+    <script src="js.js"></script>
+</head>
+
+<body>
+    <form name="másodf">
+        <div>
+            <i><b>A másodfokú egyenlet:</b></i><br>
+            <span id="bevitel"><b><i><input type="number" name="a"> *X<sup>2</sup> +
+                        <input type="number" name="b"> * X +
+                        <input type="number" name="c"> = 0 </b></i><br><br></span>
+            <span id="gomb"><input type="button" value="Számol!" onclick="szamolas()"></span>
+        </div>
+        <div>
+            <p><i>Az egyenlet megoldása:</i></p>
+            <p>A diszkrimináns D = <span id="diszkrimináns"></span></p>
+            <p id="dmegold"></p><span id="kiiratas">
+                x<sub>1</sub> = <input type="number" name="x1"><br>
+                x<sub>2</sub> = <input type="number" name="x2"></span>
+        </div>
+    </form>
+
+    <div id="kamatoskamat">
+        Betét: <input type="number" name="betét"><br><br>
+        Kamatláb: <input type="number" name="kamatláb"><br><br>
+        Évek száma: <input type="number" name="betét"><br><br>
+        <span id="gomb"><input type="button" value="Számít!" onclick="táblázat()"></span>
+        <br><br><b>Betét értékei:</b>
+    </div>
+    <div id="nem"><span id="kamat"></span></div>
+</body>
+
+</html>

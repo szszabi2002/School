@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <title>Regisztráció</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <form name="Regisztrácio" method="get">
+        <fieldset>
+            <legend>Regisztráció</legend>
+            <br>
+            <input type="text" placeholder="Vezetéknév" id="vezetéknév">
+            <input type="text" placeholder="Keresztnév" id="keresztnév">
+            <input type="text" placeholder="Jelszó" id="jelszó">
+            <br><br>
+            Születésnap
+            <br><br>
+            <label for="Év"><strong>Év</strong></label>
+            <input type="number" name="Év" min="1956" max="2021">
+            <label for="Hó"><strong>Hó</strong></label>
+            <input type="number" name="Hó" min="1" max="12">
+            <label for="Nap"><strong>Nap</strong></label>
+            <input type="number" name="Nap" id="nap" min="1" max="31">
+            <br><br>
+            <input type="radio" name="Férfi" id="Férfi">
+            <label for="Férfi">Férfi</label>
+            <input type="radio" name="Nő" id="Nő">
+            <label for="Nő">Nő</label>
+            <input type="radio" name="Egyik se" id="Egyik se">
+            <label for="Egyik se">Egyik se</label>
+            <br><br>
+            <input type="submit" value="Regisztráció">
+        </fieldset>
+    </form>
+</body>
+
+</html>

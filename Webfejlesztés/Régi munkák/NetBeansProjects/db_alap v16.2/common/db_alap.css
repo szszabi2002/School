@@ -1,0 +1,33 @@
+table{
+    border:  black solid thin;
+    border-collapse: collapse;
+}
+
+td,th{
+    border: gray dashed thin;
+}
+
+th{
+    border: white dashed thin;
+}
+
+thead{
+    background-color: gray;
+
+}
+
+.mezo{
+    margin: 5px 0;
+    padding:0 10px 0 0;
+}
+
+
+form{
+    width: 300px;
+    margin: 5px auto;
+}
+
+input{
+    float: right;
+}
+
