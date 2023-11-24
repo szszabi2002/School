@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <title>Kód generálás</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css.css" rel="stylesheet" type="text/css" />
+    <script src="js.js"></script>
+</head>
+
+<body>
+    <h4>Ciklus típusának kiválasztása</h4>
+    <div>
+        <ul>
+            <li>
+                <input type="radio" id="rb1" name="rb1" value="While" />
+                <label for="rb1">While ciklus</label>
+            </li>
+            <li>
+                <input type="radio" id="rb2" name="rb1" value="Do...While" />
+                <label for="rb2">Do... While ciklus</label>
+            </li>
+            <li>
+                <input type="radio" id="rb3" name="rb1" value="For" />
+                <label for="rb3">For</label>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h4>A ciklus paramétereinek megadása</h4>
+        <label for="kezdő">Kezdő érték: i = </label>
+        <input type="number" id="szam1">
+    </div>
+    <div>
+        <label for="feltétel">Ciklusfeltétel: i </label>
+        <select name="reláció" id="relacio">
+            <option value="==">==</option>
+            <option value="<">
+                <</option> <option value=">">>
+            </option>
+            <option value="<=">
+                <=</option> <option value=">=">>=
+            </option>
+        </select>
+        <input type="number" id="szam2">
+    </div>
+    <div>
+        <label for="Lépésköz">Lépésköz: i = i</label>
+        <select name="számok" id="lepeskoz">
+            <option value="+">+</option>
+            <option value="-">-</option>
+        </select>
+        <input type="number" id="szam3">
+    </div>
+    <div>
+        <input type="button" value="Kód generálása" name="btnkód" onclick="generalas()" />
+        <h4>A generált kód</h4>
+        <textarea name="kód" id="kod" readonly rows="10" cols="100" placeholder="Generált kód..."></textarea>
+        <br><input type="button" value="Futtat" name="btnkód2" onclick="futtat()" />
+    </div>
+    <div>
+        <h4>A kód futtatásának eredménye:</h4>
+    </div>
+</body>
+
+</html>

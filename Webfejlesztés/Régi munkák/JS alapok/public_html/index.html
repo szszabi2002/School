@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <head>
+        <title>Js gyakorlás</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body{
+                background-color: cyan;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <p>Alaprész</p>
+            <p>Első bekezdés Gyakorlás</p>
+            <p id="elsoid">Második bekezdés Gyakorlás</p>
+            <p>Harmadik bekezdés Gyakorlás</p>
+            <p>Negyedik bekezdés Gyakorlás</p>
+            <p>Ötödik bekezdés Gyakorlás</p>
+            <p>Hatodik bekezdés Gyakorlás</p>
+            <script>
+                var teszt = 5;
+                var teszt2 = 10;
+                var szöveg = "próba";
+                document.write("<br>Első Js rész az oldalon.");
+                document.write("<br>Js rész az oldalon: ", szöveg);
+                document.write("<br>Első változó: " + szöveg + " második változó: " + teszt);
+                document.write("<br>"+teszt + teszt2);
+                document.getElementById("elsoid").innerHTML = "Megjelenő szöveg";
+            </script>
+        </div>
+    </body>
+</html>

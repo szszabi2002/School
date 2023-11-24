@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS gyakorlás</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body{
+                background-color: cadetblue;
+            }
+            h1{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Müveletek</h1>
+        <p>Számoljuk ki mennyivel kerestem ma többet mint tegnap.</p>
+        <p>A fizetésem még mindig kevés, most éppen <span id="csere">.</span> ft havonta, de ha előlétetnek több lesz.</p>
+        <p>Jelenleg meg tudo élni.</p>
+        <script>
+            var fizetes = 200000;
+            var ado = 50000;
+            var tb = 5000;
+            var bonusz = 13000;
+
+            var oszzfizu = fizetes - ado - tb + bonusz;
+            var kézpénz = prompt('Mennyi a kézpénzed?');
+            var netflix = prompt('Adj meg mennyit költesz netflixre');
+            var játékok = prompt('Adj meg mennyit költesz játékokra');
+            var ételek = prompt('Adj meg mennyit költesz az ételekre');
+
+            document.write("A fizetésem havonta a levonások után: " + oszzfizu + " Ft Ez elég kevés.");
+            document.write("<br/> A teljes fizetésem " + fizetes + " Ft levonások után " + (fizetes - ado - tb + bonusz) + " Ft");
+            document.getElementById("csere").innerHTML = fizetes;
+
+            var osszkoltseg = kézpénz - netflix - játékok - ételek;
+            document.write("<br/><br/> Kézpénz: " + kézpénz + " Ft<br/> Netflix ár: " + netflix + " Ft<br/> Játékok: " + játékok + " Ft<br/> Ételek ára: " + ételek + " Ft");
+            document.write("<br/> A képénzem havonta a levonások után: " + (osszkoltseg) + " Ft");
+            document.write("<br/> Ennyi pénzem maradt az év végére ha mindig ennyit költök: " + (osszkoltseg * 12) + " Ft");
+        </script>
+    </body>
+</html>

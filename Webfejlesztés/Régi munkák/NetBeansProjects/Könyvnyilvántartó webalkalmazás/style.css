@@ -1,0 +1,156 @@
+html {
+  font-family: "Times New Roman";
+  font-size: 16px;
+}
+header {
+  font-family: Broadway;
+  font-size: xx-large;
+  padding: 30px;
+  text-align: center;
+  background-color: peru;
+  grid-area: header;
+}
+footer {
+  padding: 10px;
+  text-align: center;
+  grid-area: footer;
+  background-color: peru;
+  width: 100%;
+  font-weight: bold;
+  padding-top: 1%;
+}
+nav {
+  background-color: wheat;
+  grid-area: menu;
+  border: 2px solid peru;
+  text-align: right;
+  position: relative;
+  padding: 5px 0px 5px 5px;
+}
+li > button:hover {
+  cursor: pointer;
+}
+li > button {
+  width: 100%;
+  font-size: 20px;
+  border: 1px solid peru;
+  background-color: white;
+  text-align: left;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin-bottom: 3px;
+  padding: 6px 16px;
+}
+ul {
+  list-style: none;
+  margin-top: 5px;
+  margin-left: -30px;
+}
+.menukep img {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+main {
+  width: 100%;
+  background-color: wheat;
+  grid-area: main;
+  position: relative;
+}
+main > a > img {
+  position: absolute;
+  top: 12%;
+  left: 18%;
+}
+body {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "menu main"
+    "footer footer";
+  grid-template-columns: 20% 80%;
+  margin: 0;
+  height: 100vh;
+  grid-template-rows: 10% 1fr 5%;
+}
+#uj {
+  width: 30%;
+  margin: 0 auto;
+  font-weight: bold;
+}
+.mezo {
+  color: peru;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 0px;
+  padding: 0px;
+  text-align: center;
+}
+label {
+  height: 20px;
+  width: 200px;
+  margin-top: 10px;
+  margin-left: -300px;
+  text-align: right;
+  margin-right: 100px;
+  float: left;
+  text-align: left;
+}
+input {
+  height: 20px;
+  width: 300px;
+  margin-top: 10px;
+}
+#add {
+  color: white;
+  background-color: peru;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid whitesmoke;
+}
+table {
+  width: 80%;
+  margin-top: 50px;
+  margin: 0 auto;
+  text-align: center;
+  color: peru;
+  border: 1px solid peru;
+}
+thead {
+  width: 8%;
+  background-color: peru;
+  color: white;
+}
+td {
+  width: 50px;
+  border: 1px solid peru;
+  background-color: white;
+}
+.kep {
+  height: 30px;
+  width: 35px;
+  vertical-align: middle;
+  padding: 5px;
+}
+tbody {
+  font-weight: bold;
+}
+#tablazat {
+  border-collapse: collapse;
+  margin-top: 50px;
+}
+.valasz {
+  color: peru;
+  margin: 0 auto;
+  text-align: center;
+}
+.valasz input {
+  color: black;
+  width: 80px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+.valasz input:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,19 @@
+.container{
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    
+}
+.header, h4{
+    text-align: center;
+    background-color: White;
+    padding: 10px;
+}
+.adatok{
+    margin: 0 auto;
+    padding: 10px;
+    width: 30%;
+}
+a{
+    text-decoration: none;
+}

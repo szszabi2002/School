@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@900&display=swap');
+::-webkit-scrollbar {
+  display: none;
+}
+.card:hover {
+  background-color: lightgray;
+}
+.card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.card {
+  width: 100%;
+  height: 80vh;
+  position: relative;
+}
+nav {
+  background-color: greenyellow;
+}
+#fekete {
+  color: black;
+  font-size: 40px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.card img#rejtetkep {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.card:hover img#rejtetkep {
+  opacity: 1;
+}
+.card img#easteregg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.btn {
+  display: inline;
+  float: right;
+}
+.card-text{
+  text-align: justify;
+  font-size: 20px;
+  margin-top: 0 auto;
+}
+h5{
+  font-weight: bold;
+  font-size: 22px;
+  margin-top: 8px;
+}
+.card-body {
+  overflow-y: scroll;
+}
