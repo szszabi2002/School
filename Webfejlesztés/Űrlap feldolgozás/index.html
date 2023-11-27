@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Űrlap feldolgozás</title>
+</head>
+<body>
+    <form>
+        <table>
+            <thead>
+                <tr>
+                    <td>Sport, mozgás</td>
+                    <td>kcal/óra</td>
+                    <td>perc</td>
+                    <td>kcal</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Futás</td>
+                    <td>680</td>
+                    <td>
+                        <input type="text" id="futasPerc" name="futasPerc" oninput="szamol()">
+                    </td>
+                    <td>
+                        <input type="text" id="futasKal" name="futasKal">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
