@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Űrlap feldolgozás</title>
 </head>
+
 <body>
     <form>
         <table>
@@ -20,13 +22,108 @@
             <tbody>
                 <tr>
                     <td>Futás</td>
-                    <td>680</td>
+                    <td id="futasOrankent">680</td>
                     <td>
-                        <input type="text" id="futasPerc" name="futasPerc" oninput="szamol()">
+                        <input type="number" min="0" id="futasPerc" name="futasPerc" oninput="szamol('futasOrankent','futasPerc','futasKal')">
                     </td>
                     <td>
                         <input type="text" id="futasKal" name="futasKal">
                     </td>
+                </tr>
+                <tr>
+                    <td>Focizás</td>
+                    <td id="fociOrankent">550</td>
+                    <td>
+                        <input type="number" min="0" id="fociPerc" name="fociPerc" oninput="szamol('fociOrankent','fociPerc','fociKal')">
+                    </td>
+                    <td>
+                        <input type="text" id="fociKal" name="fociKal">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Bringázás</td>
+                    <td id="bringazasOrankent">480</td>
+                    <td>
+                        <input type="number" min="0" id="bringazasPerc" name="bringazasPerc" oninput="szamol('bringazasOrankent','bringazasPerc','bringazasKal')">
+                    </td>
+                    <td>
+                        <input type="text" id="bringazasKal" name="bringazasKal">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hegymászás</td>
+                    <td id="hegymaszasOrankent">420</td>
+                    <td>
+                        <input type="number" min="0" id="hegymaszasPerc" name="hegymaszasPerc" oninput="szamol('hegymaszasOrankent','hegymaszasPerc','hegymaszasKal')">
+                    </td>
+                    <td>
+                        <input type="text" id="hegymaszasKal" name="hegymaszasKal">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Lovaglás</td>
+                    <td id="lovaglasOrankent">370</td>
+                    <td>
+                        <input type="number" min="0" id="lovaglasPerc" name="lovaglasPerc" oninput="szamol('lovaglasOrankent','lovaglasPerc','lovaglasKal')">
+                    </td>
+                    <td>
+                        <input type="text" id="lovaglasKal" name="lovaglasKal">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Túzásás</td>
+                    <td id="turaOrankent">360</td>
+                    <td>
+                        <input type="number" min="0" id="turaPerc" name="turaPerc" oninput="szamol('turaOrankent','turaPerc','turaKal')">
+                    </td>
+                    <td>
+                        <input type="text" id="turaKal" name="turaKal">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Kajakozás</td>
+                    <td id="kajakOrankent">340</td>
+                    <td>
+                        <input type="number" min="0" id="kajakPerc" name="kajakPerc" oninput="szamol('kajakOrankent','kajakPerc','kajakKal')">
+                    </td>
+                    <td>
+                        <input type="text" id="kajakKal" name="kajakKal">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Súlyzós Edzés</td>
+                    <td id="sulyedzOrankent">320</td>
+                    <td>
+                        <input type="number" min="0" id="sulyedzPerc" name="sulyedzPerc" oninput="szamol('sulyedzOrankent','sulyedzPerc','sulyedzKal')">
+                    </td>
+                    <td>
+                        <input type="text" id="sulyedzKal" name="sulyedzKal">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Pingpongozás</td>
+                    <td id="pingpongOrankent">270</td>
+                    <td>
+                        <input type="number" min="0" id="pingpongPerc" name="pingpongPerc" oninput="szamol('pingpongOrankent','pingpongPerc','pingpongKal')">
+                    </td>
+                    <td>
+                        <input type="text" id="pingpongKal" name="pingpongKal">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Kutyasétáltatás</td>
+                    <td id="kutyasetaOrankent">200</td>
+                    <td>
+                        <input type="number" min="0" id="kutyasetaPerc" name="kutyasetaPerc" oninput="szamol('kutyasetaOrankent','kutyasetaPerc','kutyasetaKal')">
+                    </td>
+                    <td>
+                        <input type="text" id="kutyasetaKal" name="kutyasetaKal">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">Összesen:</td>
+                    <td><input type="text" name="osszPerc" id="osszPerc"></td>
+                    <td><input type="text" name="osszKaloria" id="osszKaloria"></td>
                 </tr>
             </tbody>
         </table>
@@ -34,4 +131,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
