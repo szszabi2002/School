@@ -38,3 +38,42 @@ print("Első szó visszafelé: ", szavak[0][-1::-1])
 
 # Függvény segítségével csupa nagybetűvel a 4.szót
 Nagy(szavak[3])
+
+
+# Írjunk egy fv ami kap 3 számot és visszatér egy igaz vagy hamis értékkel akkor igaz ha szerkeszthető ilyen 3 szög
+def Haromszog(x, y, z):
+    return x < (y + z) and y < (x + z) and z < (y + x)
+
+
+def Derekszog(a, b, c):
+    return a * a + b * b == c * c or a * a + c * c == b * b or b**2 + c**2 == a**2
+
+
+if Haromszog(3, 4, 5):
+    print("Szerkeszthető")
+    if Derekszog(3, 4, 5):
+        print("Derékszögű")
+    else:
+        print("Nem derekszögű")
+else:
+    print("Nem szerkeszthető")
+# Ha szerkeszthető akkor fv segítségével nézzük meg hogy derékszögű háromszög e.
+
+
+# Kérjünk be egy mondatott és egy számot, Írjuk ki a mondat annyiadik karakterét ammennyi a bekért a számú
+# Pl.: Almafa és Círok Visszakapot érték: é
+def Betu(mondat, x):
+    return mondat[x - 1]
+
+
+ujmondat = input("Mondat: ")
+sorszamlalo = int(input("Hányadik karakter? "))
+print(f"Megadott mondat {sorszamlalo}. karaktere:", Betu(ujmondat, sorszamlalo))
+
+
+def Szo(mondat, x):
+    reszek = mondat.split()
+    return reszek[x - 1]
+
+
+print(f"Megadott mondat {sorszamlalo}. szava:", Betu(ujmondat, sorszamlalo))
