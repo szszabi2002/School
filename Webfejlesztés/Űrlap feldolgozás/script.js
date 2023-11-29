@@ -13,35 +13,42 @@ function szamol(orankent, bePerc, eredmeny) {
     kiEredmeny = document.getElementById(eredmeny);
     kiEredmeny.value = (perOra / 60 * perc).toFixed(2)
     osszegez()
+    kaloriaosszegzes()
 }
-function osszegez(){
+function osszegez() {
     osszPerc = 0;
-    osszPerc +=  Number(document.getElementById('futasPerc').value)
-    osszPerc +=  Number(document.getElementById('fociPerc').value)
-    osszPerc +=  Number(document.getElementById('bringazasPerc').value)
-    if (isNaN(perc)) return perc = 0;
-    osszPerc += futasPerc;
-    futasPerc = document.getElementById('hegymaszasPerc').value
-    if (isNaN(perc)) return perc = 0;
-    osszPerc += futasPerc;
-    futasPerc = document.getElementById('lovaglasPerc').value
-    if (isNaN(perc)) return perc = 0;
-    osszPerc += futasPerc;
-    futasPerc = document.getElementById('turaPerc').value
-    if (isNaN(perc)) return perc = 0;
-    osszPerc += futasPerc;
-    futasPerc = document.getElementById('kajakPerc').value
-    if (isNaN(perc)) return perc = 0;
-    osszPerc += futasPerc;
-    futasPerc = document.getElementById('sulyedzPerc').value
-    if (isNaN(perc)) return perc = 0;
-    osszPerc += futasPerc;
-    futasPerc = document.getElementById('pingpongPerc').value
-    if (isNaN(perc)) return perc = 0;
-    osszPerc += futasPerc;
-    futasPerc = document.getElementById('kutyasetaPerc').value
-    if (isNaN(perc)) return perc = 0;
-    osszPerc += futasPerc;
-
+    percek = document.getElementsByName('perc')
+    for (i = 0; i < percek.length; i++) {
+        perc = percek[i].value
+        perc = Number(perc);
+        if (isNaN(perc)) perc = 0
+        osszPerc += perc
+    }
     document.getElementById('osszPerc').value = osszPerc;
+    //for(inicializáló kifejezések; ciklusfeltétel; léptető utasítás)
+
+    /*osszPerc += Number(document.getElementById('futasPerc').value)
+    osszPerc += Number(document.getElementById('fociPerc').value)
+    osszPerc += Number(document.getElementById('bringazasPerc').value)
+    osszPerc += Number(document.getElementById('hegymaszasPerc').value)
+    osszPerc += Number(document.getElementById('lovaglasPerc').value)
+    osszPerc += Number(document.getElementById('turaPerc').value)
+    osszPerc += Number(document.getElementById('kajakPerc').value)
+    osszPerc += Number(document.getElementById('sulyedzPerc').value)
+    osszPerc += Number(document.getElementById('pingpongPerc').value)
+    osszPerc += Number(document.getElementById('kutyasetaPerc').value)
+    if (isNaN(perc)) return perc = 0;
+    document.getElementById('osszPerc').value = osszPerc;*/
+}
+function kaloriaosszegzes() {
+    osszKal = 0;
+    kal = document.getElementsByName('kaloria')
+    for (i = 0; i < kal.length; i++) {
+        kaloria = kal[i].value
+        kaloria = Number(kaloria);
+        if (isNaN(kaloria)) kaloria = 0
+        osszKal += kaloria
+    }
+    document.getElementById('osszKaloria').value = osszKal.toFixed(2);
+    document.getElementById('napiArany').value = Math.round(osszKal / 2000 * 100);
 }
