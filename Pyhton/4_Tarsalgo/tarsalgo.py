@@ -15,3 +15,7 @@ with open("ajto.txt", "r", encoding="utf8") as in_file:
         atmenet = sor.strip()
         adatok.append(atmenet)
     print(adatok)
+    # Írjunk ki az első és a 10. átmenő ember adatait
+    print(adatok[0])
+    print(adatok[9])
+    # Írjuk ki az 10. ember írányát és az első ember kódját
