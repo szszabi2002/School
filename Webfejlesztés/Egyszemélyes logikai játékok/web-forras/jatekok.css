@@ -5,6 +5,7 @@ header.jumbotron{
     background-position-y: center;
     background-color: darkgrey;
     padding: 15px;
+    color: white;
 
 }
 
@@ -70,7 +71,8 @@ table tr td:first-child {
 }
 
 #kmeret, #kido, #knev {
-    color: darkslategrey
+    color: darkslategrey;
+    font-size: 150%;
 }
 
 footer.jumbotron {
@@ -93,4 +95,7 @@ footer p {
 
 footer a[href] {
     color:  rgb(255, 238, 191);
+}
+p{
+    text-align: justify;
 }
