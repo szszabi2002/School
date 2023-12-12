@@ -98,7 +98,8 @@
         <h3>Média</h3>
         <p>A Tour de Hongrie történetében ötödik alkalommal követhetik majd a
           nézők élő televíziós közvetítésen keresztül az eseményeket.</p>
-        <!--A versenysorozat YouTube csatornáján évekre visszamenőleg számos videó megtekinthető az érdeklődők és a nosztalgiára vágyók számára.-->
+        <p>A versenysorozat <a href="https://www.youtube.com/channel/UCLsCl72oY5PFU5-xiDWZCog" target="_blank">YouTube csatornáján</a> évekre visszamenőleg számos
+          videó megtekinthető az érdeklődők és a nosztalgiára vágyók számára.</p>
         <h3>Társadalmi szerepvállalás</h3>
         <p>A Tour de Hongrie – ahogyan az elmúlt években is – továbbra is
           vállalja, hogy fontos ügyek mellé áll. 2020-ban is a
@@ -112,7 +113,7 @@
           társadalmi szerepvállalásban fontos ügyek felé is fordítsa.</p>
       </div>
       <div class="col-lg-5 col-xl-4">
-        <p>Szakaszok</p>
+        <h3>Szakaszok</h3>
         <img src="kepek/2020szakaszok.jpg" class="kiskep" alt="A 2020-as verseny szakaszai" title="A 2020-as verseny szakaszai">
         <ol class="szakasz">
           <li>
@@ -164,7 +165,7 @@
 
     <h2 class="display-5" id="sikereink">Magyar sikerek</h2>
     <div class="row">
-      <div class="col-lg-5">
+      <div class="col-lg-4">
         <p>A körverseny több mint kilenc évtizedes története során a hazai
           kerékpárosok szerezték meg a legtöbb győzelmet, tizenkilenc
           alkalommal nyert magyar versenyző az összetettben. Négyszer osztrák,
@@ -173,17 +174,17 @@
           Svájc, Franciaország, Hollandia, Jugoszlávia, Luxemburg, Észtország,
           Kolumbia vagy Lettország versenyzője.</p>
       </div>
-      <div class="col-lg-2">
+      <div class="col-lg-4">
         <img src="kepek/cimvedo2020.jpg" class="kiskep" alt="Valter Attila címvédő" title="Valter Attila címvédő">
         <p class="kepfelirat">2020-as győztes: Valter Attila</p>
       </div>
-      <div class="col-lg-5">
+      <div class="col-lg-4">
         <h3>Időszalag</h3>
         <form>
           <p>A versenysorozat dobogósai:</p>
-          <input type="range" class="form-control-range" id="verseny" value="41">
+          <input type="range" class="form-control-range" id="verseny" min="1" max="41" value="41" onchange="frissit()">
           <strong><span id="sorszam">41</span>. Tour de Hongrie győztesei:</strong>
-          <ol>
+          <ol class="helyezes">
             <li>
               <p id="hely1"><strong>Valter Attila (HUN)<br>18:45:55</strong></p>
             </li>
