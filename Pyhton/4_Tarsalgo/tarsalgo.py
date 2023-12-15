@@ -1,6 +1,10 @@
 # fájl beolvasása: WITH OPEN('elérési út + név', 'r', encoding='utf8') AS objektum neve:
 # a késsőbiekben az objektumból nyerjük ki a fájl sorait Readlines() metódussal és a kinyert adatokat egy listába írjuk
-with open("ajto.txt", "r", encoding="utf8") as in_file:
+with open(
+    "C:/Users/szincsak.szabolcs/Documents/GitHub/School/Pyhton/4_Tarsalgo/ajto.txt",
+    "r",
+    encoding="utf8",
+) as in_file:
     beolvas = []
     # az in_file objektum a fájl sorait tartalmazza
     # ezt töltjük át egy beolvas listába
