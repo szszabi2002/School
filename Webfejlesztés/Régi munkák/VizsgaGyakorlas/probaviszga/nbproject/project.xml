@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://www.netbeans.org/ns/project/1">
     <type>org.netbeans.modules.php.project</type>
@@ -7,3 +10,28 @@
         </data>
     </configuration>
 </project>
+=======
+>>>>>>> 041c220ce7569f7e25a1711f78e24d7f5e4ef32a
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.php.project</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/php-project/1">
+            <name>probaviszga</name>
+        </data>
+    </configuration>
+</project>
+<<<<<<< HEAD
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.php.project</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/php-project/1">
+            <name>probaviszga</name>
+        </data>
+    </configuration>
+</project>
+=======
+>>>>>>> 041c220ce7569f7e25a1711f78e24d7f5e4ef32a
+>>>>>>> e64aef7d494d1f1d5727fa570625277f6bcb2d8f

@@ -72,11 +72,7 @@ else:
 a = int(input("Háromszög egyik oldala: "))
 b = int(input("Háromszög másik oldala: "))
 c = int(input("Háromszög harmadik oldala: "))
-if a < (b+c) or b < (a+c) or c < (b+a):
-    {
-        print("Szerkeszthető")
-    }
+if a < (b + c) or b < (a + c) or c < (b + a):
+    {print("Szerkeszthető")}
 else:
-    {
-        print("Nem szerkeszthet")
-    }
+    {print("Nem szerkeszthet")}
