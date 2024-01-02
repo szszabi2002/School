@@ -1,0 +1,59 @@
+body
+{
+	color:white;
+	font-family:"Luicida Sans";
+}
+
+header
+{
+	background-image: url("kepek/2021.jpg");
+	background-size:cover;
+	height:300px;
+}
+
+header h1
+{
+	padding:30px 0;
+}
+
+h2
+{
+	color:lightgreen;
+	background-color:rgba(40, 150, 40, 0.5);
+	letter-spacing:2px;
+}
+
+
+.kep
+{
+	margin:10px;
+}
+
+#masodik
+{
+	width:400px;
+	text-align:center;
+	margin:10px;
+	border:2px solid white;
+}
+
+.kozep
+{
+	text-align:center;
+}
+
+h1
+{
+	font-variant:small-caps;
+}
+
+
+footer
+{
+	
+}
+
+a,a:hover, a:visited
+{
+	color:white;
+}
