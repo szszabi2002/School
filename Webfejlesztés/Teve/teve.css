@@ -1,0 +1,38 @@
+body{
+	background-repeat:no-repeat;
+	background-size:cover;
+	font-family:cursive;
+}
+
+p{
+	text-align:justify;
+}
+
+hr{
+	border:2px solid orange;
+}
+
+input{
+	background-color:transparent;
+	font-family:cursive;
+	width:100px;
+	margin-bottom:10px;
+	font-weight:bold;
+	padding:5px;
+}
+
+#vers{
+	width:600px;
+	margin: 0 auto;
+}
+
+#fohasz{
+	font-style:italic; 
+	text-align:center;  
+}
+
+#oazis{
+	width:30%;
+}
+
+
