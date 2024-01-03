@@ -1,38 +1,68 @@
-body{
-	background-repeat:no-repeat;
-	background-size:cover;
-	font-family:cursive;
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: cursive;
 }
 
-p{
-	text-align:justify;
+p {
+  text-align: justify;
 }
 
-hr{
-	border:2px solid orange;
+hr {
+  border: 2px solid orange;
 }
 
-input{
-	background-color:transparent;
-	font-family:cursive;
-	width:100px;
-	margin-bottom:10px;
-	font-weight:bold;
-	padding:5px;
+input {
+  background-color: transparent;
+  font-family: cursive;
+  width: 100px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  padding: 5px;
 }
 
-#vers{
-	width:600px;
-	margin: 0 auto;
+#vers {
+  width: 600px;
+  margin: 0 auto;
 }
 
-#fohasz{
-	font-style:italic; 
-	text-align:center;  
+#fohasz {
+  font-style: italic;
+  text-align: center;
+  text-transform: uppercase;
 }
 
-#oazis{
-	width:30%;
+#oazis {
+  width: 30%;
 }
 
+.tevekep {
+  float: right;
+}
 
+html {
+  background-image: url("sivatag.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  border-bottom: 3px orange solid;
+}
+
+#romhanyi {
+  size: 11px;
+  font-style: italic;
+  text-align: right;
+}
+#jobbra {
+  text-align: right;
+}
+a {
+  text-decoration: none;
+  color: orange;
+}
+button {
+  width: 15%;
+  padding: 5px;
+}
