@@ -1,0 +1,2 @@
+def atvalt(arfolyam,ertek):
+    return round(ertek/arfolyam,2)
