@@ -18,7 +18,7 @@ def dollarToEuro(arfolyam, ertek):
 
 
 with open(
-    "movies.txt",
+    "C:/Users/szsza/OneDrive/School/School/Pyhton/ágazati1/Forrás/B - Programozás Pythonban/movies.txt",
     "r",
     encoding="utf8",
 ) as in_file:
