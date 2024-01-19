@@ -1,0 +1,69 @@
+body {
+  color: #293647;
+}
+
+.bg-fej {
+  background: url("hatter.jpg");
+  background-position: center;
+  width: 100%;
+  height: 250px;
+  padding-top: 75px;
+}
+
+.bg-fej h1 {
+  color: white;
+  font-size: 500%;
+  text-transform: uppercase;
+  text-decoration: underline overline;
+  font-weight: bold;
+}
+
+.container {
+  margin-bottom: 25px;
+}
+
+.bg-torzs {
+  background-color: lightblue;
+}
+
+h3 {
+  margin: 25px 0px;
+}
+
+a {
+  color: darkblue;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#szel,
+#mag {
+  margin: 0px auto 15px;
+}
+
+#kalkGomb {
+  margin: 20px auto;
+}
+
+#valasz {
+  visibility: hidden;
+}
+
+footer p {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid lightblue;
+}
+
+.felsorolas {
+  list-style: none;
+  line-height: 2em;
+  font-size: 140%;
+}
+
+h3 {
+  text-align: center;
+}
+p {
+  text-align: justify;
+}

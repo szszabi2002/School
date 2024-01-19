@@ -1,0 +1,183 @@
+Budapest-Déli;30;0
+Budapest-Kelenföld;30;4
+Albertfalva;30;8
+Budafok;30;9
+Kastélypark;30;13
+Nagytétény;30;16
+Tétényliget;30;18
+Érd alsó;30;20
+Tárnok;30;24
+Martonvásár;30;33
+Baracska;30;36
+Pettend;30;41
+Kápolnásnyék;30;44
+Velence;30;47
+Velencefürdő;30;48
+Gárdony;30;50
+Agárd;30;52
+Dinnyés;30;56
+Ódinnyés;30;57
+Székesfehérvár;30;67
+Székesfehérvár-Repülőtér;30;71
+Sóstelep;30;73
+Szabadbattyán;30;77
+Kiscséripuszta;30;85
+Polgárdi-Tekerespuszta;30;90
+Lepsény;30;95
+Balatonaliga;30;102
+Balatonvilágos;30;105
+Gamásza;30;108
+Szabadisóstó;30;109
+Szabadifürdő;30;111
+Siófok-Tisztviselőtelep;30;113
+Siófok;30;115
+Balatonszéplak felső;30;118
+Balatonszéplak alsó;30;120
+Zamárdi felső;30;122
+Zamárdi;30;124
+Szántód-Kőröshegy;30;128
+Balatonföldvár;30;130
+Balatonszárszó;30;134
+Balatonszemes;30;139
+Balatonlelle felső;30;143
+Balatonlelle;30;146
+Balatonboglár felső;30;147
+Balatonboglár;30;149
+Jankovich-telep;30;151
+Fonyódliget;30;154
+Fonyód;30;157
+Bélatelep;30;159
+Alsóbélatelep;30;161
+Balatonfenyves felső;30;163
+Balatonfenyves;30;164
+Balatonfenyves alsó;30;166
+Máriahullámtelep;30;168
+Máriaszőlőtelep;30;170
+Balatonmáriafürdő;30;173
+Balatonberény;30;177
+Balatonszentgyörgy;30;180
+Vörs;30;185
+Sávoly;30;191
+Sávoly-Tőzegtelep;30;194
+Zalakomár;30;200
+Zalaszentjakab;30;206
+Nagyrécse;30;215
+Nagykanizsa;30;221
+Budapest-Keleti;80;0
+Kőbánya felső;80;5
+Rákos;80;8
+Budapest-Városszéli telep;80;11
+Rákoskeresztúr;80;13
+Rákosliget;80;15
+Rákoscsaba-Újtelep;80;16
+Rákoscsaba;80;17
+Pécel;80;21
+Isaszeg;80;30
+Gödöllő-Állami telepek;80;33
+Gödöllő;80;36
+Máriabesnyő régi;80;39
+Máriabesnyő;80;39
+Máriabesnyői kolostor;80;43
+Bag;80;49
+Aszód;80;51
+Hévízgyörk;80;53
+Galgahévíz;80;56
+Tura;80;59
+Hatvan Rendező pu.;80;66
+Hatvan;80;67
+Hort-Csány;80;77
+Vámosgyörk;80;87
+Adács;80;91
+Karácsond;80;97
+Ludas;80;101
+Nagyút;80;106
+Kál-Kápolna;80;113
+Füzesabony;80;125
+Szihalom;80;131
+Mezőkövesd-Hőfürdő;80;134
+Mezőkövesd;80;138
+Mezőkövesd felső;80;140
+Klementina;80;144
+Mezőkeresztes-Mezőnyárád;80;147
+Csincse;80;156
+Emőd;80;162
+Nyékládháza;80;169
+Kistokaj;80;173
+Miskolc-Rendező pu.;80;180
+Miskolc-Tiszai;80;182
+Felsőzsolca;80;187
+Hernádnémeti-Bőcs;80;197
+Tiszalúc;80;202
+Taktaharkány;80;211
+Taktaszada;80;214
+Szerencs;80;220
+Mezőzombor;80;225
+Bodrogkeresztúr;80;232
+Szegi;80;236
+Erdőbénye;80;238
+Olaszliszka-Tolcsva;80;244
+Bodrogolaszi;80;250
+Sárospatak;80;256
+Sátoraljaújhely;80;266
+Vámosgyörk;85;0
+Init;85;5
+Commit;85;9
+Push;85;11
+Pull;85;13
+Fetch;85;18
+Branch;85;24
+Budapest-Nyugati;100;0
+Városligeti elágazás;100;1
+Zugló;100;5
+Kőbánya-Teher;100;7
+Kőbánya alsó;100;8
+Kőbánya-Kispest;100;11
+Pestszentlőrinc;100;14
+Szemeretelep;100;16
+Ferihegy;100;18
+Vecsés;100;22
+Vecsés-Kertekalja;100;23
+Üllő;100;29
+Hosszúberek-Péteri;100;33
+Monor;100;38
+Monorierdő;100;44
+Pilis;100;48
+Albertirsa;100;55
+Ceglédbercel;100;60
+Ceglédbercel-Cserő;100;62
+Budai út;100;66
+Cegléd;100;73
+Kecskéscsárda;100;81
+Abony;100;89
+Paládicspuszta;100;95
+Szolnok;100;100
+Szajol;100;110
+Pusztaszuri;100;116
+Törökszentmiklós;100;119
+Barta;100;124
+Pusztaszakállas;100;128
+Fegyvernek-Örményes;100;131
+Turgony;100;138
+Kisújszállás;100;146
+Karcagi puszta;100;154
+Karcag;100;162
+Apavára;100;169
+Püspökladány;100;177
+Kelenc;100;182
+Kaba;100;188
+Benedekvölgy;100;194
+Hajdúszoboszló;100;201
+Vérvölgy;100;207
+Ebes;100;209
+Ondód;100;215
+Debrecen;100;221
+Debrecen-Csapókert;100;224
+Apafa;100;229
+Pallagpusztai major;100;231
+Bocskaikert;100;235
+Hajdúhadház;100;240
+Téglás;100;243
+Kismicske;100;248
+Újfehértó;100;255
+Császárszállás;100;263
+Nyíregyháza;100;270
