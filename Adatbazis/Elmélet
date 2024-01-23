@@ -1,0 +1,9 @@
+DQL: Lekérdezés
+
+SELECT megjeleno_oszlopok_neve
+FROM tabla(k)
+WHERE szurofeltetel(ek)
+GROUP BY mezonev(ek)
+HAVING szurofeltetel(ek)
+ORDER BY mezonev(ek)
+LIMIT melyik_elemtol, darabszam;
