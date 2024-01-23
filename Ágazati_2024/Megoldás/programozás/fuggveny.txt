@@ -1,0 +1,3 @@
+def ar(tav):
+    ar = (tav//100)*2200 + (tav%100)*18
+    return ar
