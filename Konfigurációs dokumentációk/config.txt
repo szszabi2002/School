@@ -1,0 +1,213 @@
+Building configuration...
+
+Current configuration : 1628 bytes
+!
+! Last configuration change at 12:25:11 UTC Mon Jan 2 2006
+! NVRAM config last updated at 13:12:40 UTC Mon Jan 2 2006
+! NVRAM config last updated at 13:12:40 UTC Mon Jan 2 2006
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname RouterBURGUNDIA
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$oO0b$pq6kNaBru9RQdRILCWNN60
+!
+no aaa new-model
+!
+dot11 syslog
+ip source-route
+!
+!
+!
+!
+!
+ip cef
+no ip domain lookup
+ip domain name burgundia.local
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+crypto pki token default removal timeout 0
+!
+!
+!
+!
+license udi pid CISCO1841 sn FCZ121260D3
+username admin password 0 cisco
+!
+redundancy
+!
+!
+ip ssh version 2
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address 172.16.1.1 255.255.255.192
+ duplex auto
+ speed auto
+ ipv6 address FE80:: link-local
+!
+interface FastEthernet0/1
+ ip address 172.16.0.1 255.255.255.0
+ duplex auto
+ speed auto
+ ipv6 address FE80:: link-local
+ ipv6 address 2001:DB8:ABCD::/81
+!
+interface Serial0/0/0
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+interface Serial0/1/0
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+banner login ^CMindig legyen Burgundia!^C
+banner motd ^CBelepes csak burgundiasok dolgozi reszere!^C
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ exec-timeout 0 40
+ logging synchronous
+ login local
+ transport input ssh
+line vty 5 6
+ exec-timeout 0 40
+ logging synchronous
+ login local
+ transport input ssh
+!
+scheduler allocate 20000 1000
+end
+
+RouterBURGUNDIA(config-if)#
+
+
+
+SwitchBAL#show run
+Building configuration...
+
+Current configuration : 1367 bytes
+!
+version 12.1
+no service pad
+service timestamps debug uptime
+service timestamps log uptime
+no service password-encryption
+!
+hostname SwitchBAL
+!
+aaa new-model
+!
+username admin password 0 cisco
+ip subnet-zero
+!
+ip domain-name burgundia.local
+!
+spanning-tree mode pvst
+no spanning-tree optimize bpdu transmission
+spanning-tree extend system-id
+!
+!
+interface FastEthernet0/1
+!
+interface FastEthernet0/2
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ ip address 172.16.0.2 255.255.255.0
+ no ip route-cache
+!
+ip default-gateway 172.16.0.1
+ip http server
+!
+!
+line con 0
+line vty 0 2
+ exec-timeout 0 25
+ timeout login response 0
+ logging synchronous
+ transport input telnet
+line vty 3 4
+line vty 5 15
+!
+
+SwitchBAL#

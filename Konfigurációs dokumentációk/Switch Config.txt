@@ -1,0 +1,168 @@
+Current configuration : 3664 bytes
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname S1
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$q/hM$VGecTLYT72l7x4xACYhX41
+!
+username admin secret 5 $1$qNPc$Dlbf0ga4RRWmnZ9saK2YA0
+no aaa new-model
+system mtu routing 1500
+ip subnet-zero
+!
+!
+no ip domain-lookup
+ip domain-name ccna-lab.com
+!
+!
+crypto pki trustpoint TP-self-signed-3876450816
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3876450816
+ revocation-check none
+ rsakeypair TP-self-signed-3876450816
+!
+!
+crypto pki certificate chain TP-self-signed-3876450816
+ certificate self-signed 01
+  30820247 308201B0 A0030201 02020101 300D0609 2A864886 F70D0101 04050030
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 33383736 34353038 3136301E 170D3933 30333031 30303030
+  35325A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D33 38373634
+  35303831 3630819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281
+  8100D421 0438E79F DCA12273 4E3F1564 7A52958D 6E2DB5FE 86AB1F3A 04D78094
+  B07DEB5A 9829A1DA FECC6029 6F18B857 9DD53700 B74A8125 4D5CA7B8 1885B03B
+  256A3D0A 284A9CAA 0EF70E4E 01653714 41008049 FF48C124 A595FB45 630FF524
+  490DA1F5 E6E92911 BC1E3E55 D2D46EC3 B4B72F73 9DDD5D18 B798AB48 F10681AA
+  E27B0203 010001A3 6F306D30 0F060355 1D130101 FF040530 030101FF 301A0603
+  551D1104 13301182 0F53312E 63636E61 2D6C6162 2E636F6D 301F0603 551D2304
+  18301680 14B0B9F2 E44DB9DB B4D159A4 A69B595E A0C3C21E C4301D06 03551D0E
+  04160414 B0B9F2E4 4DB9DBB4 D159A4A6 9B595EA0 C3C21EC4 300D0609 2A864886
+  F70D0101 04050003 8181009C 7A445F57 84CBEEB1 9DD619AE D82D1EFE DBB31549
+  284839DC 9F2555F7 259CF08E 3B205E04 422A04A1 EDE9E9D7 A2E65028 9E450A97
+  4CBC6537 FDD83354 7941C324 474E428E E932264E FFA0C34C 39F863AC 144124F7
+  1326EDE4 9A0948E0 D99F6462 5F650AF5 9F2CF19E 7126A39C 4580D6CE BFF2E46F
+  13FB2A41 93AA8BEC C1C1D4
+  quit
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip ssh version 2
+!
+!
+interface FastEthernet0/1
+ shutdown
+!
+interface FastEthernet0/2
+ shutdown
+!
+interface FastEthernet0/3
+ shutdown
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+ shutdown
+!
+interface FastEthernet0/8
+ shutdown
+!
+interface FastEthernet0/9
+ shutdown
+!
+interface FastEthernet0/10
+ shutdown
+!
+interface FastEthernet0/11
+ shutdown
+!
+interface FastEthernet0/12
+ shutdown
+!
+interface FastEthernet0/13
+ shutdown
+!
+interface FastEthernet0/14
+ shutdown
+!
+interface FastEthernet0/15
+ shutdown
+!
+interface FastEthernet0/16
+ shutdown
+!
+interface FastEthernet0/17
+ shutdown
+!
+interface FastEthernet0/18
+ shutdown
+!
+interface FastEthernet0/19
+ shutdown
+!
+interface FastEthernet0/20
+ shutdown
+!
+interface FastEthernet0/21
+ shutdown
+!
+interface FastEthernet0/22
+ shutdown
+!
+interface FastEthernet0/23
+ shutdown
+!
+interface FastEthernet0/24
+ shutdown
+!
+interface GigabitEthernet0/1
+ shutdown
+!
+interface GigabitEthernet0/2
+ shutdown
+!
+interface Vlan1
+ description Subnet A
+ ip address 192.168.10.2 255.255.255.128
+ no ip route-cache
+ ipv6 address FE80::2 link-local
+ ipv6 address 2001:DB8:ACAD:8000:1::2/49
+!
+ip default-gateway 192.168.10.1
+ip http server
+ip http secure-server
+ipv6 route ::/0 2001:DB8:ACAD:8000:1::
+!
+control-plane
+!
+banner motd ^CBelepes csak engedelyel^C
+!
+line con 0
+ password 7 00071A150754080901314D5D1A
+line vty 0 4
+ login local
+ transport input ssh
+line vty 5 15
+ login local
+ transport input ssh
+!
+end

@@ -1,0 +1,14 @@
+ena
+conf t
+vlan 10
+name HR
+vlan 20
+name IT
+int fa0/1
+switchport mode access 
+switchport access vlan 10
+int f0/11
+switchport mode access 
+switchport access vlan 20
+int g0/1
+switchport mode trunk
