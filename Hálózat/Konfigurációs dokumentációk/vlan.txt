@@ -35,3 +35,41 @@ switchport access vlan 10
 int g0/2
 switchport mode access 
 switchport access vlan 20
+
+ena
+conf t
+vlan 10
+vlan 20
+int fa0/1
+switchport mode access 
+switchport access vlan 10
+int f0/3
+switchport mode access 
+switchport access vlan 20
+int g0/1
+switchport mode access 
+switchport access vlan 10
+int g0/2
+switchport mode access 
+switchport access vlan 20
+
+int g0/1
+switchport mode trunk
+int g0/2
+switchport mode trunk
+
+ena
+conf t
+vlan 10
+vlan 20
+int fa0/1
+switchport mode access 
+switchport access vlan 10
+int f0/3
+switchport mode access 
+switchport access vlan 20
+int g0/1
+switchport mode trunk
+
+Router
+int g0/0.10 Router vlan létrehozása '.'-tal történik
