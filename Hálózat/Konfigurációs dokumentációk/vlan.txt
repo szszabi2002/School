@@ -73,3 +73,32 @@ switchport mode trunk
 
 Router
 int g0/0.10 Router vlan létrehozása '.'-tal történik
+
+ena
+conf t
+vlan 10
+name Admin
+vlan 20
+name Accounts
+vlan 30
+name HR
+vlan 40
+name Voice
+vlan 99
+name Management
+vlan 100
+name Native
+int fa0/1
+switchport mode access 
+switchport access vlan 10
+int f0/2
+switchport mode access 
+switchport access vlan 20
+int fa0/3
+switchport mode access 
+switchport access vlan 30
+int g0/2
+switchport mode dynamic auto 
+int fa0/4
+switchport mode access 
+switchport access vlan 10
