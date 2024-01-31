@@ -102,3 +102,30 @@ switchport mode dynamic auto
 int fa0/4
 switchport mode access 
 switchport access vlan 10
+
+ena
+conf t
+vlan 10
+name vlan10
+vlan 20
+name vlan20
+vlan 30
+name vlan30
+vlan 40
+name vlan40
+int fastEthernet 0/1
+sw m a 
+switchport access vlan 10
+int fastEthernet 0/2
+sw m a 
+switchport access vlan 20
+int range fastEthernet 0/19 - 20
+channel-group 1 mode active
+exit
+int port-channel 1
+sw m t
+int range fastEthernet 0/23 - 24
+channel-group 2 mode desirable
+exit
+int port-channel 2
+sw m t
