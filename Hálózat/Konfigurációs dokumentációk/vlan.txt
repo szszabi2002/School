@@ -129,3 +129,34 @@ channel-group 2 mode desirable
 exit
 int port-channel 2
 sw m t
+
+ena 
+conf t
+hostname S1
+ip domain-name burgundia.local
+spanning-tree mode pvst
+spanning-tree portfast default
+spanning-tree portfast bpduguard default
+interface FastEthernet0/1
+switchport access vlan 10
+switchport mode access
+switchport nonegotiate
+switchport port-security
+interface FastEthernet0/11
+switchport access vlan 20
+switchport mode access
+switchport nonegotiate
+switchport port-security mac-address sticky 
+int range fastEthernet 0/2 - 10, fastEthernet 0/12 - 24, gigabitEthernet 0/2
+shutdown
+crypto key generate rsa general-keys modulus 2048
+username admin secret cisco
+ip ssh version 2
+line vty 0 15
+login local
+logg sy
+tr in ssh
+interface Vlan10
+ip address 172.16.10.2 255.255.255.128
+interface Vlan20
+ip address 172.16.20.2 255.255.255.192
