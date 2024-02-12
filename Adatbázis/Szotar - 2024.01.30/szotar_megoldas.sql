@@ -12,6 +12,7 @@ FROM szolista
 WHERE szolista.helyes >= 150
 OR szolista.helytelen <= 5
 /*3*/
+
 SELECT
   szolista.angol,
   szolista.magyar
