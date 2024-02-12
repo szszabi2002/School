@@ -160,3 +160,104 @@ interface Vlan10
 ip address 172.16.10.2 255.255.255.128
 interface Vlan20
 ip address 172.16.20.2 255.255.255.192
+
+ena
+conf t
+vlan 25
+name VLANA
+vlan 50
+name VLANB
+int range f0/1-5
+sw m a
+sw a vlan 25
+int range f0/10-15
+sw m a
+sw a vlan 50
+int g0/1
+sw m a
+sw a vlan 50
+int f0/24
+sw m t
+
+ena
+conf t
+vlan 10
+name VLANA
+vlan 17
+name VLANB
+vlan 23
+name VLANC
+vlan 55
+name VLAND
+vlan 77
+name VLANE
+int f0/1
+sw m a 
+sw a v 10
+int f0/2
+sw m a
+sw a v 10
+int f0/14
+sw m a
+sw a v 55
+int f0/17
+sw m a
+sw a v 77
+int f0/24
+sw m t
+int f0/23
+sw m t
+
+ena
+conf t
+int f0/12
+sw m a
+sw a v 10
+int f0/18
+sw m a
+sw a v 20
+int f0/4
+sw m t
+int f0/19
+sw m t
+int f0/14
+sw m t
+int g0/1
+sw m t 
+sw t allowed vlan 10,20
+
+ena
+conf t
+vlan 10
+vlan 20
+vlan 30
+vlan 40
+int f0/4
+sw m t
+int f0/12
+sw m t
+int f0/8
+sw m t
+int f0/7
+sw m t 
+
+
+ena
+conf t
+int range f0/19-20
+channel-group 1 mode desirable
+exit
+int port-channel 1
+sw m t
+int range f0/21-22
+channel-group 3 mode active
+exit
+int port-channel 3
+sw m t
+
+ena
+conf t
+vlan 5
+vlan 11
+vlan 16
+vlan 40
