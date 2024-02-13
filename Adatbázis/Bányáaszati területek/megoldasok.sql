@@ -1,4 +1,4 @@
--- Active: 1707118294076@@127.0.0.1@3306@mbt
+-- Active: 1706598324977@@127.0.0.1@3306@mbt
 /*1*/
 CREATE DATABASE mbt
 DEFAULT CHARACTER SET utf8
@@ -69,16 +69,25 @@ FROM kapcsolo
     ON kapcsolo.nyersanyagid = nyersanyag.id
 WHERE telek.fedoszint BETWEEN 450 AND 550
 
-/*9*/
+/*a Helyes*/
 SELECT DISTINCT
-  nyersanyag.nev,
-  COUNT(telek.telepules) AS db
+  telek.telepules,
+  nyersanyag.nev
 FROM kapcsolo
   INNER JOIN telek
     ON kapcsolo.telekid = telek.id
   INNER JOIN nyersanyag
     ON kapcsolo.nyersanyagid = nyersanyag.id
-GROUP BY nyersanyag.nev
+WHERE telek.fedoszint >= 450 AND telek.fekuszint <= 550 
+
+/*9*/
+SELECT DISTINCT
+  nyersanyag.nev,
+  COUNT(kapcsolo.telekid) AS db
+FROM kapcsolo
+  INNER JOIN nyersanyag
+    ON kapcsolo.nyersanyagid = nyersanyag.id
+GROUP BY nyersanyag.id
 ORDER BY db DESC
 LIMIT 1
 
@@ -94,3 +103,13 @@ FROM kapcsolo
 WHERE telek.allapot = 'B'
 OR telek.allapot = 'T'
 ORDER BY telek.telepules
+
+SELECT DISTINCT telepules FROM telek
+WHERE telepules NOT IN 
+(SELECT DISTINCT telepules FROM telek
+WHERE allapot != 'B');
+
+SELECT DISTINCT telepules FROM telek
+WHERE allapot = 'B' AND telepules NOT IN 
+(SELECT DISTINCT telepules FROM telek
+WHERE allapot != 'B');
