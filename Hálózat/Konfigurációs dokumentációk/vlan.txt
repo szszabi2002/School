@@ -160,3 +160,157 @@ interface Vlan10
 ip address 172.16.10.2 255.255.255.128
 interface Vlan20
 ip address 172.16.20.2 255.255.255.192
+
+ena
+conf t
+hostname R1
+ip domain-name burgundia.local
+username admin secret cisco
+crypto key generate rsa general-keys modulus 2048
+line vty 0 15
+login local 
+logg sy
+transport input ssh
+ipv6 unicast-routing 
+ipv6 dhcp pool Vlan10
+dns-server 2001:4860:4860::8844
+domain-name company.com
+add prefix 2001:db8:bbbb:1::/64
+ipv6 dhcp pool Vlan20
+dns-server 2001:4860:4860::8844
+domain-name company.com
+add prefix 2001:db8:bbbb:2::/64
+ipv6 dhcp pool Vlan30
+dns-server 2001:4860:4860::8844
+domain-name company.com
+add prefix 2001:db8:bbbb:3::/64
+ip dhcp pool Vlan10
+network 192.168.1.0 255.255.255.0
+default-router 192.168.1.1
+dns-server 8.8.8.8
+domain-name burgundia.local
+ip dhcp pool Vlan20
+network 192.168.2.0 255.255.255.0
+default-router 192.168.2.1
+dns-server 8.8.8.8
+domain-name burgundia.local
+ip dhcp pool Vlan30
+network 192.168.3.0 255.255.255.0
+default-router 192.168.3.1
+dns-server 8.8.8.8
+domain-name burgundia.local
+int g0/1
+no sh
+int g0/1.10
+encapsulation dot1Q 10
+ipv6 enable
+ip add 192.168.1.2 255.255.255.0
+ipv6 add 2001:db8:bbbb:1::2/64
+ipv6 add fe80::2 link-local
+ipv6 dhcp server Vlan10
+ipv6 nd managed-config-flag
+standby version 2
+standby 10 ip 192.168.1.1
+standby 10 ipv6 add 2001:db8:bbbb:1::1/64
+standby 10 ipv6 add fe80::1 link-local
+standby 10 priority 110
+standby 10 preemt
+int g0/1.20
+encapsulation dot1Q 20
+ipv6 enable
+ip add 192.168.2.2 255.255.255.0
+ipv6 add 2001:db8:bbbb:2::2/64
+ipv6 add fe80::2 link-local
+ipv6 dhcp server Vlan20
+ipv6 nd managed-config-flag
+standby version 2
+standby 20 ip 192.168.2.1
+standby 20 ipv6 add 2001:db8:bbbb:2::1/64
+standby 20 ipv6 add fe80::1 link-local
+standby 20 priority 110
+standby 20 preemt
+int g0/1.30
+encapsulation dot1Q 30
+ipv6 enable
+ip add 192.168.3.2 255.255.255.0
+ipv6 add 2001:db8:bbbb:3::2/64
+ipv6 add fe80::2 link-local
+ipv6 dhcp server Vlan30
+ipv6 nd managed-config-flag
+standby version 2
+standby 30 ip 192.168.3.1
+standby 30 ipv6 add 2001:db8:bbbb:3::1/64
+standby 30 ipv6 add fe80::1 link-local
+standby 30 priority 110
+standby 30 preemt
+
+ena
+conf t
+hostname R2
+ip domain-name burgundia.local
+username admin secret cisco
+crypto key generate rsa general-keys modulus 2048
+line vty 0 15
+login local 
+logg sy
+transport input ssh
+ipv6 unicast-routing 
+ipv6 dhcp pool Vlan10
+dns-server 2001:4860:4860::8844
+domain-name company.com
+add prefix 2001:db8:bbbb:1::/64
+ipv6 dhcp pool Vlan20
+dns-server 2001:4860:4860::8844
+domain-name company.com
+add prefix 2001:db8:bbbb:2::/64
+ipv6 dhcp pool Vlan30
+dns-server 2001:4860:4860::8844
+domain-name company.com
+add prefix 2001:db8:bbbb:3::/64
+ip dhcp pool Vlan10
+network 192.168.1.0 255.255.255.0
+default-router 192.168.1.1
+dns-server 8.8.8.8
+domain-name burgundia.local
+ip dhcp pool Vlan20
+network 192.168.2.0 255.255.255.0
+default-router 192.168.2.1
+dns-server 8.8.8.8
+domain-name burgundia.local
+ip dhcp pool Vlan30
+network 192.168.3.0 255.255.255.0
+default-router 192.168.3.1
+dns-server 8.8.8.8
+domain-name burgundia.local
+int g0/1
+no sh
+int g0/1.10
+encapsulation dot1Q 10
+ipv6 enable
+ip add 192.168.1.3 255.255.255.0
+ipv6 add 2001:db8:bbbb:1::3/64
+ipv6 add fe80::3 link-local
+ipv6 dhcp server Vlan10
+ipv6 nd managed-config-flag
+standby version 2
+standby 10 ip 192.168.1.1
+int g0/1.20
+encapsulation dot1Q 20
+ipv6 enable
+ip add 192.168.2.3 255.255.255.0
+ipv6 add 2001:db8:bbbb:2::3/64
+ipv6 add fe80::3 link-local
+ipv6 dhcp server Vlan20
+ipv6 nd managed-config-flag
+standby version 2
+standby 20 ip 192.168.2.1
+int g0/1.30
+encapsulation dot1Q 30
+ipv6 enable
+ip add 192.168.3.3 255.255.255.0
+ipv6 add 2001:db8:bbbb:3::3/64
+ipv6 add fe80::3 link-local
+ipv6 dhcp server Vlan30
+ipv6 nd managed-config-flag
+standby version 2
+standby 30 ip 192.168.3.1
