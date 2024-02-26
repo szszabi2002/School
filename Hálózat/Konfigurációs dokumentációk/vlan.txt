@@ -413,3 +413,182 @@ vlan 5
 vlan 11
 vlan 16
 vlan 40
+
+ena
+conf t
+vlan 8 
+vlan 10
+vlan 20
+vlan 21
+vlan 22
+vlan 24
+vlan 30
+vlan 42
+vlan 68
+vlan 72
+int g0/1
+no sh 
+sw m t
+
+no 
+ena
+conf t
+hostname R1
+ip dhcp pool Vlan
+network 172.16.1.128 255.255.255.192
+default-router 172.16.1.129
+dns-server 8.8.8.8
+domain-name burgundia.local
+ip dhcp pool Vlan10
+network 172.16.1.224 255.255.255.240
+default-router 172.16.1.225
+dns-server 8.8.8.8
+domain-name burgundia.local
+ip dhcp pool Vlan30
+network 172.16.1.0 255.255.255.128
+default-router 172.16.1.1
+dns-server 8.8.8.8
+domain-name burgundia.local
+int g0/0
+no sh
+int g0/0.8
+encapsulation dot1Q 8
+ip add 172.16.1.129 255.255.255.192
+int g0/0.10
+encapsulation dot1Q 10
+ip add 172.16.1.225 255.255.255.240
+int g0/1
+no sh
+int g0/1.30
+encapsulation dot1Q 30
+ip add 172.16.1.1 255.255.255.128
+int s0/0/0
+ip add 100.100.100.1 255.255.255.252
+no sh
+
+
+no 
+ena
+conf t
+hostname R2
+ip dhcp pool Vlan20
+network 172.16.1.192 255.255.255.224
+default-router 172.16.1.129
+dns-server 8.8.8.8
+domain-name burgundia.local
+ip dhcp pool Vlan42
+network 172.16.0.0 255.255.255.0
+default-router 172.16.1.225
+dns-server 8.8.8.8
+domain-name burgundia.local
+int g0/0
+no sh
+int g0/0.20
+encapsulation dot1Q 20
+ip add 172.16.1.193 255.255.255.224
+int g0/0.42
+encapsulation dot1Q 42
+ip add 172.16.0.1 255.255.255.0
+int s0/0/0
+ip add 100.100.100.1 255.255.255.252
+no sh
+int s0/0/1
+ip add 100.100.100.5 255.255.255.252
+no sh
+
+ena
+conf t
+hostname R3
+ip dhcp pool Vlan24
+network 192.168.0.0 255.255.255.128
+default-router 192.168.0.1
+dns-server 8.8.8.8
+domain-name burgundia.local
+int g0/0
+no sh
+int g0/0.20
+encapsulation dot1Q 24
+ip add 192.168.0.1 255.255.255.128
+int s0/0/0
+ip add 100.100.100.6 255.255.255.252
+no sh
+int s0/0/1
+ip add 100.100.100.9 255.255.255.252
+no sh
+
+ena
+conf t
+hostname R4
+ip dhcp pool Vlan68
+network 192.168.0.128 255.255.255.192
+default-router 192.168.0.129
+dns-server 8.8.8.8
+domain-name burgundia.local
+ip dhcp pool Vlan72
+network 192.168.0.192 255.255.255.224
+default-router 192.168.0.193
+dns-server 8.8.8.8
+domain-name burgundia.local
+int g0/0
+no sh
+int g0/0.68
+encapsulation dot1Q 68
+ip add 192.168.0.129 255.255.255.192
+int g0/0.72
+encapsulation dot1Q 72
+ip add 192.168.0.193 255.255.255.224
+int s0/0/0
+ip add 100.100.100.10 255.255.255.252
+no sh
+
+ena
+conf t
+hostname R5
+ip dhcp pool Vlan21
+network 10.0.8.0 255.255.255.0
+default-router 10.0.8.1
+dns-server 8.8.8.8
+domain-name burgundia.local
+ip dhcp pool Vlan22
+network 10.0.10.0 255.255.255.0
+default-router 10.0.10.1
+dns-server 8.8.8.8
+domain-name burgundia.local
+int g0/0
+no sh
+int g0/0.21
+encapsulation dot1Q 21
+ip add 10.0.8.1 255.255.255.0
+int g0/0.22
+encapsulation dot1Q 22
+ip add 10.0.10.1 255.255.255.0
+int s0/1/0
+ip add 100.100.100.13 255.255.255.252
+no sh
+
+ip route 172.16.1.128 255.255.255.192 s0/0/0
+ip route 172.16.1.224 255.255.255.240 s0/0/0
+ip route 172.16.1.0 255.255.255.128 s0/0/0
+ip route 192.168.0.0 255.255.255.128 s0/0/1
+ip route 192.168.0.128 255.255.255.192 s0/0/1
+ip route 192.168.0.192 255.255.255.224 s0/0/1
+
+ip route 172.16.1.128 255.255.255.192 s0/1/0
+ip route 172.16.1.224 255.255.255.240 s0/1/0
+ip route 172.16.1.0 255.255.255.128 s0/1/0
+ip route 172.16.1.192 255.255.255.0 s0/1/0
+ip route 172.16.0.0 255.255.255.0 s0/1/0
+ip route 192.168.0.0 255.255.255.128 s0/1/0
+ip route 192.168.0.128 255.255.255.192 s0/1/0
+ip route 192.168.0.192 255.255.255.224 s0/1/0
+
+ip route 10.0.8.0 255.255.255.0 s0/1/0
+ip route 10.0.10.0 255.255.255.0 s0/1/0
+
+ena
+conf t
+int f0/2
+sw port-security 
+sw port-security violation shutdown 
+sw port-security maximum 1
+sw port-security mac-address 0030.F2B8.7710
