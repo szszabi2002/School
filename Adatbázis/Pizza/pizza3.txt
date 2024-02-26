@@ -1,0 +1,17 @@
+A Pizza adatbázis adatai alapján újabb SQL lekérdezések segítségével válaszold meg az alábbi kérdéseket!
+
+Kérdések:
+
+
+	 1.	Kik rendeltek legalább háromszor annyi pizzát, mint egy átlagos vevõ?
+	 2.	Kik szállítottak házhoz legalább tízszer?
+	 3.	Mely pizzából fogyott legalább 50 db?
+	 4.	Mely vevõk nem rendeltek legalább háromszor?
+	 5.	Kik rendeltek legalább 5 Vigyori pizzát?
+	 6.	Milyen pizzából nem rendelt soha Columbo?
+	 7.	Van-e olyan pizza, amelybõl soha nem rendeltek?
+	 8.	Ki nem rendelt soha Vigyori pizzát?
+	 9.	Mely pizzafutárokkal nem találkoztak az egyes vevõk?
+	10.	Kik rendeltek több Vigyori pizzát, mint Nevetõset?
+	11.	Kik rendeltek legalább 5 Hahota vagy 8 Kacagós pizzát?
+	12.	Kik rendeltek kétfajta pizzából is legalább 10 darabot?

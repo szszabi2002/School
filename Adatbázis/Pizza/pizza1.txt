@@ -1,0 +1,53 @@
+Gyakorló lekérdezések I. (Pizza adatbázis)
+
+Egy pizzafutár-szolgálat nyilvántartása a következõ adattáblákat tartalmazza:
+
+
+
+		Pizza		Futar		Vevo		Rendeles	Tetel
+		-----		-----		----		--------	-----
+				
+		Pazon		Fazon		Vazon		Razon		Razon
+		Pnev		Fnev		Vnev		Vazon		Pazon
+		Par			Ftel		Vcim		Fazon		Db
+								Datum	
+								Ido	
+
+
+	ahol
+
+		Pazon		N 3		a pizza azonosítója
+		Pnev		C 15	a pizza neve
+		Par			N 4		a pizza ára
+		Fazon		N 3		a pizzafutár azonosítója
+		Fnev		C 25	a pizzafutár neve
+		Ftel		C 12	a pizzafutár telefonszáma
+		Vazon		N 6		a megrendelõ azonosítója
+		Vnev		C 30	a megrendelõ neve
+		Vcim		C 30	a megrendelõ lakcíme
+		Razon		N 8		a rendelés sorszáma
+		Datum		D 8		a rendelés dátuma
+		Ido			N 5,2	a rendelés ideje (óra és perc hh.mm alakban)
+		Db			N 3		egy rendelési tétel darabszáma
+
+Az adatbázis tartalma itt található: Pizza.sql
+
+Az adatokból SQL lekérdezések segítségével válaszold meg az alábbi kérdéseket!
+
+Kérdések:
+
+
+	 1.	Hogy hívják az egyes pizzafutárokat?
+	 2.	Milyen pizzák közül lehet rendelni, és mennyibe kerülnek?
+	 3.	Mennyibe kerül átlagosan egy pizza?
+	 4.	Mely pizzák olcsóbbak 1000 Ft-nál?
+	 5.	Ki szállította házhoz az elsõ (egyes sorszámú) rendelést?
+	 6.	Kik rendeltek pizzát délelõtt?
+	 7.	Milyen pizzákat evett Szundi?
+	 8.	Ki szállított házhoz Tudornak?
+	 9.	Az egyes rendelések alkalmával, ki kinek szállított házhoz?
+	10.	Mennyit költött pizzára Morgó?
+	11.	Hány alkalommal rendelt Sorrento pizzát Vidor?
+	12.	Hány pizzát evett Hapci?
+	13.	Hányszor rendelt pizzát Szende?
+	14.	Hány darab Hawaii pizza fogyott összesen?
