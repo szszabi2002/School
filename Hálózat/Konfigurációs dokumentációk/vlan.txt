@@ -592,3 +592,9 @@ sw port-security
 sw port-security violation shutdown 
 sw port-security maximum 1
 sw port-security mac-address 0030.F2B8.7710
+
+ena
+conf t
+sdm prefer dual-ipv4-and-ipv6 default 
+do write
+do reload
