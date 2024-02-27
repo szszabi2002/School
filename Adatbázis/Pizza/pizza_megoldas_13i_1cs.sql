@@ -107,3 +107,13 @@ FROM tetel
   INNER JOIN pizza
     ON tetel.pazon = pizza.pazon
 WHERE pizza.pnev = 'Hawaii'
+
+/*Helyes*/
+SELECT
+  pizza.pnev,
+  IFNULL(SUM(tetel.db),0) AS 'Hawaii pizza db'
+FROM tetel
+  RIGHT OUTER JOIN pizza
+    ON tetel.pazon = pizza.pazon
+WHERE pizza.pnev = 'Hawaii'
+GROUP BY pizza.pnev
