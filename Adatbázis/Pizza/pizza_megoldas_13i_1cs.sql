@@ -101,3 +101,9 @@ WHERE
     vnev = 'Szende';
 
 /*14.	Hány darab Hawaii pizza fogyott összesen?*/
+SELECT
+  COUNT(tetel.db) AS 'Hawaii pizza db'
+FROM tetel
+  INNER JOIN pizza
+    ON tetel.pazon = pizza.pazon
+WHERE pizza.pnev = 'Hawaii'
