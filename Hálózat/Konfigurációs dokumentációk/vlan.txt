@@ -598,3 +598,96 @@ conf t
 sdm prefer dual-ipv4-and-ipv6 default 
 do write
 do reload
+
+ena
+conf t
+hostname R9
+enable secret cisco
+ip domain-name burgundia.local
+username test secret cisco
+crypto key generate rsa general-keys modulus 2048
+ip ssh version 2
+line vty 0 15
+login local 
+logg sy
+transport input ssh
+ipv6 unicast-routing 
+ipv6 dhcp pool Vlan10
+add prefix 2001:db8:AAA9:10::/64
+ipv6 dhcp pool Vlan20
+add prefix 2001:db8:AAA9:20::/64
+ip dhcp pool Vlan10
+network 192.168.9.0 255.255.255.128
+default-router 192.168.9.1
+dns-server 8.8.8.8
+ip dhcp pool Vlan20
+network 192.168.9.128 255.255.255.128
+default-router 192.168.9.129
+int g0/0
+no sh
+int g0/0.10
+encapsulation dot1Q 10
+ipv6 enable
+ip add 192.168.9.1 255.255.255.128
+ipv6 add 2001:db8:AAA9:10::1/64
+ipv6 dhcp server Vlan10
+ipv6 rip Teszt enable
+int g0/0.20
+encapsulation dot1Q 20
+ipv6 enable
+ip add 192.168.9.129 255.255.255.128
+ipv6 add 2001:db8:AAA9:20::1/64
+ipv6 dhcp server Vlan20
+ipv6 rip Teszt enable
+exit
+int s0/0/0
+ip address 10.0.0.33 255.255.255.252
+ipv6 address 2001:db8:BBBB:91::33/64
+ipv6 rip Teszt enable
+no sh
+int s0/0/1
+ip address 10.0.0.30 255.255.255.252
+ipv6 address 2001:db8:BBBB:89::30/64
+ipv6 rip Teszt enable
+no sh
+exit
+ipv6 router rip Teszt
+ip routing
+router rip
+version 2
+no auto-summary
+network 10.0.0.28
+network 10.0.0.32
+network 192.168.9.0
+network 192.168.9.128
+
+ena
+cisco
+conf t
+hostname S9
+sdm prefer dual-ipv4-and-ipv6 default
+enable secret cisco
+vlan 10
+vlan 20
+int f0/1
+sw m a
+sw access vlan 10
+int f0/2
+sw m a
+sw access vlan 20
+ip domain-name burgundia.local
+username test secret cisco
+crypto key generate rsa general-keys modulus 2048
+ip ssh version 2
+line vty 0 15
+login local 
+logg sy
+transport input ssh
+int vlan 10
+no sh
+ip add 192.168.9.2 255.255.255.128
+ipv6 address 2001:db8:aaa9:10::2/64
+int vlan 20
+no sh
+ip add 192.168.9.130 255.255.255.128
+ipv6 address 2001:db8:aaa9:20::2/64
