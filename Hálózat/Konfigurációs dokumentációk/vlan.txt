@@ -706,3 +706,34 @@ vlan 90
 int g0/1
 no sh
 sw m t
+
+ip dhcp pool Vlan60
+network 172.16.0.0 255.255.255.0
+default-router 172.16.0.1
+dns-server 8.8.8.8
+domain-name burgundia.local
+ip dhcp pool Vlan70
+network 172.16.1.0 255.255.255.192
+default-router 172.16.1.1
+dns-server 8.8.8.8
+ip dhcp pool Vlan50
+network 192.168.0.0 255.255.255.0
+default-router 192.168.0.1
+dns-server 8.8.8.8
+
+
+router rip
+version 2
+no auto-summary
+network 192.168.1.0
+network 192.168.1.192
+network 192.168.0.0
+network 200.0.0.0
+
+router rip
+version 2
+no auto-summary
+network 200.0.0.12
+network 200.0.0.16
+network 172.16.0.0
+network 172.16.1.0
