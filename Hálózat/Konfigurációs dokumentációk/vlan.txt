@@ -691,3 +691,18 @@ int vlan 20
 no sh
 ip add 192.168.9.130 255.255.255.128
 ipv6 address 2001:db8:aaa9:20::2/64
+
+ena 
+conf t 
+vlan 10
+vlan 20
+vlan 30
+vlan 40
+vlan 50
+vlan 60
+vlan 70
+vlan 80
+vlan 90
+int g0/1
+no sh
+sw m t
