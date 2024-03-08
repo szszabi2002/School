@@ -799,3 +799,91 @@ ip address 10.0.0.1 255.255.248.0
 ipv6 add 2001:db8:ACAD:90::1/64
 ipv6 dhcp server Vlan90
 ipv6 rip Teszt enable
+
+ena
+conf t
+vlan 11
+vlan 22
+vlan 33
+vlan 44
+vlan 55
+vlan 66
+vlan 77
+vlan 88
+vlan 99
+vlan 111
+vlan 122
+vlan 133
+vlan 144
+vlan 155
+int r f0/1-4
+channel-group 1 mode active 
+exi 
+int port-channel 1 
+no sh
+sw m t
+
+ena
+conf t
+vlan 11
+vlan 22
+vlan 33
+vlan 44
+vlan 55
+vlan 66
+vlan 77
+vlan 88
+vlan 99
+vlan 111
+vlan 122
+vlan 133
+vlan 144
+vlan 155
+int r f0/3-4
+channel-group 1 mode desirable 
+int r f0/5-6
+channel-group 2 mode desirable 
+exi 
+int port-channel 1 
+no sh
+sw m t
+int port-channel 2
+no sh
+sw m t
+
+ip dhcp pool Vlan11
+network 192.168.3.0 255.255.255.128
+default-router 192.168.3.1
+dns-server 8.8.8.8
+domain-name burgundia.local
+ip dhcp pool Vlan22
+network 192.168.2.0 255.255.255.0
+default-router 192.168.2.1
+dns-server 8.8.8.8
+ip dhcp pool Vlan33
+network 192.168.0.0 255.255.254.0
+default-router 192.168.0.1
+dns-server 8.8.8.8
+ip dhcp pool Vlan44
+network 192.168.3.128 255.255.255.192
+default-router 192.168.3.129
+dns-server 8.8.8.8
+
+ip dhcp pool Vlan99
+network 172.16.0.192 255.255.255.240
+default-router 172.16.0.193
+dns-server 8.8.8.8
+ip dhcp pool Vlan111
+network 172.16.0.128 255.255.255.224
+default-router 172.16.0.129
+dns-server 8.8.8.8
+int g0/0
+no sh
+int g0/1
+no sh
+int g0/0.99
+en d 99
+ip add 172.16.0.193 255.255.255.240
+int g0/1.111
+en d 111
+ip add 172.16.0.129 255.255.255.224
