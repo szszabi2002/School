@@ -887,3 +887,101 @@ ip add 172.16.0.193 255.255.255.240
 int g0/1.111
 en d 111
 ip add 172.16.0.129 255.255.255.224
+
+enable
+conf t
+int r f0/15-16
+channel-group 3 mode desirable
+exi
+int port-channel 3
+sw m t
+
+exit
+int f0/24
+sw m t
+
+ena
+conf t
+vlan 11
+vlan 22
+vlan 33
+vlan 44
+vlan 55
+vlan 66
+vlan 77
+vlan 88
+vlan 99
+vlan 111
+vlan 122
+vlan 133
+vlan 144
+vlan 155
+
+ena
+conf t
+ip dhcp pool Vlan122
+network 10.0.0.96 255.255.255.240
+default-router 10.0.0.97
+dns-server 8.8.8.8
+ip dhcp pool Vlan133
+network 10.0.0.112 255.255.255.240
+default-router 10.0.0.113
+dns-server 8.8.8.8
+ip dhcp pool Vlan144
+network 10.0.0.64 255.255.255.224
+default-router 10.0.0.65
+dns-server 8.8.8.8
+ip dhcp pool Vlan155
+network 10.0.0.0 255.255.255.192
+default-router 10.0.0.1
+dns-server 8.8.8.8
+int g0/0
+no sh
+int g0/1
+no sh
+int g0/0.122
+en d 122
+ip add 10.0.0.97 255.255.255.240
+int g0/0.133
+en d 133
+ip add 10.0.0.113 255.255.255.240
+int g0/1.144
+en d 144
+ip add 10.0.0.65 255.255.255.224
+int g0/1.155
+en d 155
+ip add 10.0.0.1 255.255.255.192
+
+vlan 122
+vlan 133
+vlan 144
+vlan 155
+int f0/20
+sw m a
+sw a v 133
+int f0/10
+sw m a
+sw a v 144
+
+
+OSPFv3:
+
+ena
+conf t
+ipv6 unicast-routing
+ipv6 router ospf 1
+router-id 5.5.5.5
+router ospf 1
+router-id 5.5.5.5
+network 100.100.100.12 0.0.0.3  area 0
+network 10.0.0.96 0.0.0.15 area 0
+network 10.0.0.112 0.0.0.15 area 0
+network 10.0.0.64 0.0.0.31 area 0
+network 10.0.0.0 0.0.0.63 area 0
+int serial 0/0/0
+ipv6 add 2001:db8:DDDD:D::2/64
+ipv6 ospf 1 area 0
+
+int serial 0/0/1
+ipv6 add 2001:db8:CCCC:C::2/64
+ipv6 ospf 1 area 0
