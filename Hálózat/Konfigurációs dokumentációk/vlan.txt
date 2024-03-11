@@ -985,3 +985,22 @@ ipv6 ospf 1 area 0
 int serial 0/0/1
 ipv6 add 2001:db8:CCCC:C::2/64
 ipv6 ospf 1 area 0
+
+ena
+copy run start
+
+
+ena
+conf t
+int g0/0.122
+ipv6 enable
+ipv6 add 2001:db8:ACAD:122::1/64
+int g0/0.133
+ipv6 enable
+ipv6 add 2001:db8:ACAD:133::1/64
+int g0/1.144
+ipv6 enable
+ipv6 add 2001:db8:ACAD:144::1/64
+int g0/1.155
+ipv6 enable
+ipv6 add 2001:db8:ACAD:155::1/64
