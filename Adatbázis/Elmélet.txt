@@ -5,5 +5,61 @@ FROM tabla(k)
 WHERE szurofeltetel(ek)
 GROUP BY mezonev(ek)
 HAVING szurofeltetel(ek)
-ORDER BY mezonev(ek)
+ORDER BY mezonev(ek) ASC | DESC
 LIMIT melyik_elemtol, darabszam;
+
+DML: Adatok módósítása
+INSERT INTO tablaNev VALUES (); - Új rekord felvétele
+UPDATE tablaNev SET mit = mire WHERE feltétel ; -Meglévő adatok módosítása
+DELETE FROM tablaNev WHERE feltétel ; -Adatok törlése
+
+DDL: Adatbázis szerkezetének létrehozásának, módosítása
+CREATE DATABASE dbNév; -Adatbázis létrehozása
+CREATE TABLE  tablaNév ();  -Tábla létrehozása
+CREATE INDEX tablaIndex ON tablaNev(mezoNev(ek)); -Indexelés
+ALTER TABLE tablaNév ADD/MODIFY/DROP oszlopnév típus; -Oszlop hozzáadása vagy módosítása vagy eltávolítása
+ALTER TABLE tablaNev 
+    ADD FOREIGN KEY (fk) REFERENCES hivatkozottTabla(pk); -Külső kulcs hozzáadása
+    ADD COLUMN mezoNev tipus [egyéb tulajdonságok]; -Új oszlop felvétele
+    ADD PRIMARY KEY (kulcsmezo(k)); -Elsődleges kulcs hozzáadása
+
+DROP DATABASE dbNév; - Adatbázis törlése
+DROP TABLE tablaNév; - Tábla törlése
+
+AGGREGÁT függvények:
+COUNT(*) – A teljes sor számát ad
+SUM(milyenMezo) – Minden mező értékének összegzése
+MAX(melyikMezo) – A legnagyobb értéket adja vissza
+MIN(melyikMezo) – A legkisebb értéket adja vissza
+AVG(melyikMezo) – Az átlagot adja vissza
+
+Dátum függvények:
+YEAR()
+MONTH()
+DAY()
+NOW()
+CURRENT_DAY()
+DATEDIFF()
+
+Módosítók:
+ASC – Növekvő rendezési sorrendben
+DESC – Csökkenő rendezési sorrendben
+FIRST – Tábla elejére teszi az új mezőt
+LAST mezoNev – mezoNev után teszi az új mezőt
+DISTINCT  – Egyedi értékek  megjelenitése
+AUTO_INCREMENT  – Számláló
+
+Joker karakterek:
+LIKE
+IN halmaz
+hasonító operátorok
+BETWEEN alsóhatár AND felsőhatár
+CASE WHEN
+
+Logikai operátorok:
+AND
+OR
+NOT
+
+Spec értékek:
+NULL
