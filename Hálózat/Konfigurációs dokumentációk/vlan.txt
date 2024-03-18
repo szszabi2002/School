@@ -1004,3 +1004,220 @@ ipv6 add 2001:db8:ACAD:144::1/64
 int g0/1.155
 ipv6 enable
 ipv6 add 2001:db8:ACAD:155::1/64
+
+ena
+conf t 
+int r f0/1-3
+sw m a
+sw a vlan 8
+int r f0/23-24
+sw m a 
+sw a vlan 16
+
+ena
+conf t
+ip dhcp pool Vlan24
+network 192.168.3.0 255.255.255.128
+default-router 192.168.3.1
+dns-server 8.8.8.2
+ip dhcp pool Vlan32
+network 192.168.0.0 255.255.254.0
+default-router 192.168.0.1
+dns-server 8.8.8.2
+ip dhcp pool Vlan40
+network 192.168.4.64 255.255.255.192
+default-router 192.168.4.65
+dns-server 8.8.8.2
+ip dhcp pool Vlan48
+network 172.16.0.0 255.255.255.0
+default-router 172.16.0.1
+dns-server 8.8.8.2
+ip dhcp pool Vlan56
+network 172.16.1.0 255.255.255.128
+default-router 172.16.1.1
+dns-server 8.8.8.2
+int g0/0
+no sh
+int g0/1
+no sh
+int g0/0.24
+en d 24
+ip add 192.168.3.1 255.255.255.128
+int g0/0.32
+en d 32
+ip add 192.168.0.1 255.255.254.0
+int g0/0.40
+en d 40
+ip add 192.168.4.65 255.255.255.192
+int g0/1.48
+en d 48
+ip add 172.16.0.1 255.255.255.0
+int g0/1.56
+en d 56
+ip add 172.16.1.1 255.255.255.128
+do write
+
+
+ena 
+conf t
+int r f0/1-4
+channel-group 1 mode active
+int r f0/5-6
+channel-group 2 mode desirable
+exi
+int port-channel 1
+sw m t
+int port-channel 2
+sw m t
+
+ena
+conf t 
+int r f0/10-11
+sw m a
+sw a vlan 40
+int r f0/24
+sw m a 
+sw a vlan 32
+
+ena 
+conf t
+int r f0/1-4
+channel-group 1 mode active
+exi
+int port-channel 1
+sw m t
+exi
+int r f0/10-11
+sw m a
+sw a vlan 48
+int r f0/24
+sw m a 
+sw a vlan 56
+
+ena
+conf t
+ip dhcp pool Vlan64
+network 172.16.1.128 255.255.255.192
+default-router 172.16.1.129
+dns-server 8.8.8.2
+ip dhcp pool Vlan72
+network 10.0.0.0 255.255.192.0
+default-router 10.0.0.1
+dns-server 8.8.8.2
+ip dhcp pool Vlan80
+network 10.0.64.0 255.255.192.0
+default-router 10.0.64.1
+dns-server 8.8.8.2
+int g0/0
+no sh
+int g0/1
+no sh
+int g0/0.64
+en d 64
+ip add 172.16.1.129 255.255.255.192
+int g0/1.72
+en d 72
+ip add 10.0.0.1 255.255.192.0
+int g0/1.80
+en d 80
+ip add 10.0.64.1 255.255.192.0
+do write
+
+ena 
+conf t
+int r f0/1-4
+channel-group 1 mode active
+exi
+int port-channel 1
+sw m t
+int r f0/5-8
+channel-group 2 mode desirable
+exi
+int port-channel 2
+sw m t
+int port-channel 1
+sw m t
+exi
+int r f0/10-11
+sw m a
+sw a vlan 72
+int r f0/23-24
+sw m a 
+sw a vlan 64
+
+int f0/15
+sw m a 
+sw a vlan 80
+
+ena
+conf t
+ipv6 unicast-routing
+ipv6 router ospf 5
+router-id 1.1.1.1
+router ospf 5
+router-id 1.1.1.1
+network 101.101.101.0 0.0.0.3  area 0
+network 192.168.4.0 0.0.0.63 area 0
+network 192.168.3.128 0.0.0.127 area 0
+network 10.0.0.64 0.0.0.31 area 0
+network 10.0.0.0 0.0.0.63 area 0
+
+ena
+conf t
+ipv6 unicast-routing
+ipv6 router ospf 5
+router-id 3.3.3.3
+router ospf 5
+router-id 3.3.3.3
+network 101.101.101.0 0.0.0.3  area 0
+network 102.102.102.0 0.0.0.3  area 0
+network 103.103.103.0 0.0.0.3  area 0
+network 104.104.104.0 0.0.0.3  area 0
+network 105.105.105.0 0.0.0.3  area 0
+do write
+
+ena
+conf t
+ipv6 unicast-routing
+ipv6 router ospf 5
+router-id 4.4.4.4
+router ospf 5
+router-id 4.4.4.4
+network 105.105.105.0 0.0.0.3  area 0
+network 172.16.1.128 0.0.0.63 area 0
+network 10.0.0.0 0.0.63.255 area 0
+network 10.0.64.0 0.0.63.255 area 0
+do write
+
+ena
+conf t
+int s0/0/0     
+ipv6 add 2001:db8:AAAA:5::2/64
+ipv6 ospf 1 area 0
+int s0/0/1
+ipv6 add 2001:db8:AAAA:2::2/64
+ipv6 ospf 1 area 0
+int s0/1/1
+ipv6 add 2001:db8:AAAA:4::1/64
+ipv6 ospf 1 area 0
+
+ena
+conf t
+int s0/1/0
+ipv6 add 2001:db8:AAAA:3::2/64
+ipv6 ospf 1 area 0
+int s0/1/1
+ipv6 add 2001:db8:AAAA:4::2/64
+ipv6 ospf 1 area 0
+
+ena
+conf t
+int g0/0.64
+ipv6 enable
+ipv6 add 2001:db8:ACAD:64::1/64
+int g0/1.72
+ipv6 enable
+ipv6 add 2001:db8:ACAD:72::1/64
+int g0/1.80
+ipv6 enable
+ipv6 add 2001:db8:ACAD:80::1/64
