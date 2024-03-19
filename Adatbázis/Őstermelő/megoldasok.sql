@@ -12,14 +12,14 @@ CREATE TABLE ostermelo.gyumolcslevek (
   id INT(11) NOT NULL AUTO_INCREMENT,
   gynev VARCHAR(255) DEFAULT NULL,
   PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE ostermelo.partnerek (
   id INT(11) NOT NULL AUTO_INCREMENT,
   kontakt VARCHAR(255) DEFAULT NULL,
   telepules VARCHAR(255) DEFAULT NULL,
   PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE ostermelo.kiszallitasok (
   sorsz INT(11) NOT NULL AUTO_INCREMENT,
@@ -28,7 +28,7 @@ CREATE TABLE ostermelo.kiszallitasok (
   datum DATE DEFAULT NULL,
   karton INT(11) DEFAULT NULL,
   PRIMARY KEY (sorsz, gyumleid, partnerid)
-)
+);
 
 ALTER TABLE kiszallitasok 
   ADD CONSTRAINT FK_kiszallitasok_partnerek_id FOREIGN KEY (partnerid)
