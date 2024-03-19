@@ -48,9 +48,9 @@ def gyors(lista, kezdo, veg):
         gyors(lista, i, veg)
 
 
-lista = [random.randint(1, 100000) for x in range(10)]
-print("Unsorted list:", lista)
-gyros = sorted(lista[:])
-print("\nSorted list:", gyros)
+lista = [10, 120, 3, 4, 50, 6, 7, 8, 9, 10]
 
-print(gyors(szamok, 0, len(szamok) - 1))
+gyors(lista, 0, len(lista) - 1)
+
+print("Sorted list:\n")
+print(lista)
