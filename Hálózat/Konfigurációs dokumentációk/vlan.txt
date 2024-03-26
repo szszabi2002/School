@@ -1221,3 +1221,90 @@ ipv6 add 2001:db8:ACAD:72::1/64
 int g0/1.80
 ipv6 enable
 ipv6 add 2001:db8:ACAD:80::1/64
+
+ipv6 dhcp pool 7
+domain-name local.hu
+dns-server 2002:db2:AAAA:5::3
+int g0/0
+ipv6 add 2000:db7:abad:7::1/64
+ipv6 dhcp server 7
+ipv6 nd managed-config-flag
+
+int f0/24
+sw m a
+sw a v 50
+int f0/10
+sw m a
+sw a v 60
+
+ipv6 dhcp pool A
+domain-name local.hu
+dns-server 2002:db2:AAAA:5::3
+ipv6 dhcp pool B
+domain-name local.hu
+dns-server 2002:db2:AAAA:5::3
+int g0/0
+ipv6 add 2007:db5:abab:a::1/64
+ipv6 dhcp server A
+ipv6 nd managed-config-flag
+int g0/1
+ipv6 add 2007:db5:abab:b::1/64
+ipv6 dhcp server B
+ipv6 nd managed-config-flag
+
+Switch ipv6 engedélyezése: sdm prefer dual-ipv4-and-ipv6 default 
+
+sdm prefer dual-ipv4-and-ipv6 default 
+do write
+do reload
+
+ipv6 dhcp pool VLAN10
+domain-name local.hu
+dns-server 2002:db2:AAAA:5::3
+address prefix 2009:abc:ABC0:10::/64
+ipv6 dhcp pool VLAN20
+domain-name local.hu
+dns-server 2002:db2:AAAA:5::3
+address prefix 2009:abc:ABC0:20::/64
+ipv6 dhcp pool VLAN30
+domain-name local.hu
+dns-server 2002:db2:AAAA:5::3
+address prefix 2009:abc:ABC0:30::/64
+ipv6 dhcp pool VLAN40
+domain-name local.hu
+dns-server 2002:db2:AAAA:5::3
+address prefix 2009:abc:ABC0:40::/64
+int g0/0.30
+en dot1Q 30
+ipv6 add 2009:abc:ABC0:30::1/64
+ipv6 dhcp server VLAN30
+ipv6 nd managed-config-flag
+int g0/0.40
+en dot1Q 40
+ipv6 add 2009:abc:ABC0:40::1/64
+ipv6 dhcp server VLAN40
+ipv6 nd managed-config-flag
+int g0/1.10
+en dot1Q 10
+ipv6 add 2009:abc:ABC0:10::1/64
+ipv6 dhcp server VLAN10
+ipv6 nd managed-config-flag
+int g0/1.20
+en dot1Q 20
+ipv6 add 2009:abc:ABC0:20::1/64
+ipv6 dhcp server VLAN20
+ipv6 nd managed-config-flag
+
+
+ena
+conf t
+ipv6 unicast-routing 
+int vlan 1
+ipv6 enable 
+ipv6 nd other-config-flag 
+
+ena 
+conf t 
+ipv6 router ospf 3
+do clear ipv6 ospf process
+ipv6 ospf 3 area 0
