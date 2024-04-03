@@ -1308,3 +1308,70 @@ conf t
 ipv6 router ospf 3
 do clear ipv6 ospf process
 ipv6 ospf 3 area 0
+
+ena
+conf t
+ipv6 unicast-routing
+no ip domain-lookup
+hostname R1
+enable pass class
+line vty 0 15
+pass cisco
+line con 0
+pass cisco
+logging synchronous 
+exi
+banner motd "Unauthorized access is prohibited"
+service password-encryption 
+int s0/0/0
+clock rate 128000
+bandwidth 128
+ip add 192.168.12.1 255.255.255.252
+ipv6 add 2001:DB8:ACAD:12::1/64
+ipv6 add FE80::1 link-local
+no sh
+int loopback 0
+
+ip add 209.165.200.225 255.255.255.252
+ipv6 add 2001:DB8:ACAD::1/64
+no sh
+int loopback 1
+
+ip add 192.168.1.1 255.255.255.0
+ipv6 add 2001:DB8:ACAD:1::1/64
+int loopback 2
+
+ip add 192.168.2.1 255.255.255.0
+ipv6 add 2001:DB8:ACAD:2::1/64
+int loopback 3
+
+ipv6 add 2001:DB8:ACAD:3::1/64
+
+do copy run start
+
+network 192.168.1.0 0.0.0.255 area 1
+network 192.168.2.0 0.0.0.255 area 1
+network 192.168.12.0 0.0.0.3 area 0
+
+network 192.168.6.0 0.0.0.255 area 3
+network 192.168.12.0 0.0.0.3 area 0
+network 192.168.23.0 0.0.0.3 area 3
+
+network 192.168.4.0 0.0.0.255 area 3
+network 192.168.5.0 0.0.0.255 area 3
+network 192.168.23.0 0.0.0.3 area 3
+
+interface lo4
+ipv6 ospf 1 area 2
+ipv6 ospf network point-to-point
+interface lo5
+ipv6 ospf 1 area 2
+ipv6 ospf network point-to-point
+interface lo6
+ipv6 ospf 1 area 2
+ipv6 ospf network point-to-point
+interface lo7
+ipv6 ospf 1 area 2
+ipv6 ospf network point-to-point
+interface s0/0/1
+ipv6 ospf 1 area 0
