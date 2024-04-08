@@ -1375,3 +1375,17 @@ ipv6 ospf 1 area 2
 ipv6 ospf network point-to-point
 interface s0/0/1
 ipv6 ospf 1 area 0
+
+ena
+conf t
+vlan 10
+vlan 20
+vlan 30
+vlan 40
+vlan 50
+vlan 17
+vlan 27
+vlan 37
+vlan 47
+vlan 57
+vlan 67
