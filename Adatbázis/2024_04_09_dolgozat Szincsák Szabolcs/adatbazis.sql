@@ -1,3 +1,8 @@
+CREATE DATABASE hamburger_13I_2cs_dolgozat
+DEFAULT CHARACTER SET utf8
+COLLATE utf8_hungarian_ci;
+
+USE hamburger_13I_2cs_dolgozat
 -- Táblák létrehozása
 
 -- Rendelő felhasználók
