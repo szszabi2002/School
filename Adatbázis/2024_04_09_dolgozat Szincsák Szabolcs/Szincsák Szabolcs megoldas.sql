@@ -129,9 +129,48 @@ ORDER BY COUNT(HOUR(idopont)) DESC
 LIMIT 1
 
 /*8. Ki rendelte a legtöbb hamburgert?*/
-
+SELECT 
+  felhasznalo.nev,
+  SUM(mennyiseg)
+FROM rendeleselem
+  INNER JOIN rendeles
+    ON rendeleselem.rendelesId = rendeles.id
+  INNER JOIN felhasznalo
+    ON rendeles.felhasznaloId = felhasznalo.id
+  INNER JOIN menutetel
+    ON rendeleselem.menutetelId = menutetel.id
+  INNER JOIN etelkategoria
+    ON menutetel.etelkatId = etelkategoria.id
+WHERE etelkategoria.nev = 'hamburger'
+GROUP BY felhasznalo.nev
+ORDER BY 2 DESC, 1
 
 /*9. Melyik kategóriához tartozik a legtöbb étel?*/
-
+SELECT 
+  etelkategoria.nev,
+  COUNT(menutetel.nev)
+FROM rendeleselem
+  RIGHT JOIN menutetel
+    ON rendeleselem.menutetelId = menutetel.id
+  INNER JOIN etelkategoria
+    ON menutetel.etelkatId = etelkategoria.id
+GROUP BY etelkategoria.nev
+ORDER BY 2 DESC
+LIMIT 1
 
 /*10. Mely(ek) az(ok) a felhasználó(k) aki(k) a legtöbb ételkategóriából rendeltek?*/
+SELECT DISTINCT
+  felhasznalo.nev,
+  SUM(mennyiseg),
+  etelkategoria.nev
+FROM rendeleselem
+  INNER JOIN rendeles
+    ON rendeleselem.rendelesId = rendeles.id
+  INNER JOIN felhasznalo
+    ON rendeles.felhasznaloId = felhasznalo.id
+  INNER JOIN menutetel
+    ON rendeleselem.menutetelId = menutetel.id
+  INNER JOIN etelkategoria
+    ON menutetel.etelkatId = etelkategoria.id
+GROUP BY etelkategoria.nev, felhasznalo.nev
+ORDER BY 2 DESC, etelkategoria.nev, felhasznalo.nev
