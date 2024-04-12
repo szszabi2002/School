@@ -1389,3 +1389,167 @@ vlan 37
 vlan 47
 vlan 57
 vlan 67
+
+ena
+conf t 
+int r f0/1-2
+sw m a 
+sw a v 10
+
+ena
+conf t
+ip dhcp pool Vlan10
+network 192.168.0.0 255.255.254.0
+default-router 192.168.0.1
+dns-server 8.8.8.8
+ip dhcp pool Vlan20
+network 192.168.2.0 255.255.255.0
+default-router 192.168.2.1
+dns-server 8.8.8.8
+ip dhcp pool Vlan30
+network 192.168.3.0 255.255.255.128
+default-router 192.168.3.1
+dns-server 8.8.8.8
+int g0/0
+no sh
+int g0/1
+no sh
+int g0/1.20
+en d 20
+ip add 192.168.2.1 255.255.255.0
+int g0/1.30
+en d 30
+ip add 192.168.3.1 255.255.255.128
+do write
+
+ena 
+conf t
+int r f0/3-4
+channel-group 1 mode desirable
+exi
+int r f0/5-6
+channel-group 2 mode desirable
+exi
+int port-channel 1
+sw m t
+int port-channel 2
+sw m t
+
+int f0/1
+sw m a 
+sw a v 40
+int f0/2
+sw m a 
+sw a v 50
+
+int r f0/1-2
+sw m a 
+sw a v 57
+
+ena
+conf t
+ip dhcp pool Vlan40
+network 192.168.3.128 255.255.255.192
+default-router 192.168.3.129
+dns-server 8.8.8.8
+ip dhcp pool Vlan50
+network 192.168.3.192 255.255.255.224
+default-router 192.168.3.193
+dns-server 8.8.8.8
+int g0/0
+no sh
+int g0/0.40
+en d 40
+ip add 192.168.3.129 255.255.255.192
+int g0/0.50
+en d 50
+ip add 192.168.3.193 255.255.255.224
+do write
+
+ena
+conf t
+ip dhcp pool Vlan27
+network 172.16.1.0 255.255.255.0
+default-router 172.16.1.1
+dns-server 8.8.8.8
+do write
+
+ip dhcp pool Vlan37
+network 172.16.2.0 255.255.255.128
+default-router 172.16.2.1
+dns-server 8.8.8.8
+ip dhcp pool Vlan47
+network 172.16.2.128 255.255.255.128
+default-router 172.16.2.129
+dns-server 8.8.8.8
+do write
+
+ip dhcp pool Vlan30
+network 192.168.1.0 255.255.255.128
+default-router 192.168.1.1
+dns-server 8.8.8.8
+ip dhcp pool Vlan20
+network 192.168.2.0 255.255.255.224
+default-router 192.168.2.1
+dns-server 8.8.8.8
+int g0/0 
+ip add 192.168.1.1 255.255.255.128
+int g0/1
+ip add 192.168.2.1 255.255.255.224
+do write
+
+enable
+conf t
+int r f0/1-2
+sw m a 
+sw a v 30
+
+ena
+conf t
+ip dhcp pool Vlan40
+network 192.168.1.192 255.255.255.192
+default-router 192.168.1.193
+dns-server 8.8.8.8
+ip dhcp pool Vlan50
+network 192.168.0.0 255.255.255.0
+default-router 192.168.0.1
+dns-server 8.8.8.8
+ip dhcp pool Vlan60
+network 172.16.2.64 255.255.255.224
+default-router 172.16.2.65
+dns-server 8.8.8.8
+int g0/1.60
+en d 60
+ip add 172.16.2.65 255.255.255.224
+int g0/0.40
+en d 40
+ip add 192.168.1.193 255.255.255.192
+int g0/0.50
+en d 50
+ip add 192.168.0.1 255.255.255.0
+do write
+
+ena
+conf t
+ip dhcp pool Vlan70
+network 172.16.2.0 255.255.255.192
+default-router 172.16.2.1
+dns-server 8.8.8.8
+ip dhcp pool Vlan80
+network 172.16.0.0 255.255.254.0
+default-router 172.16.0.1
+dns-server 8.8.8.8
+int g0/1.80
+en d 80
+ip add 172.16.0.1 255.255.254.0
+int g0/0.70
+en d 70
+ip add 172.16.2.1 255.255.255.192
+do write
+
+
+ena
+conf t
+int r f0/1-3
+sw m a
+sw a v 70
