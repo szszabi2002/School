@@ -1,9 +1,9 @@
 import random
 
 szamok = []
-
+# Egyszerű cserés rendezés
 for i in range(15):
-    szam = random.randint(1, 40)
+    szam = random.randint(1, 400)
     szamok.append(szam)
     print(szam, end=" ")
 print("")
@@ -15,13 +15,11 @@ for i in range(0, len(szamok)):
             szamok[j] = temp
 print(szamok)
 
-szamok = []
+# Számok újra randomizálása
+random.shuffle(szamok)
+print(szamok)
 
-for i in range(15):
-    szam = random.randint(1, 40)
-    szamok.append(szam)
-    print(szam, end=" ")
-print("")
+# Minimum rendezés
 for i in range(len(szamok) - 1):
     minimum = i
     for j in range(i + 1, len(szamok)):
