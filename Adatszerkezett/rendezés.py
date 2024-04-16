@@ -2,8 +2,8 @@ import random
 
 szamok = []
 # Egyszerű cserés rendezés
-for i in range(15):
-    szam = random.randint(1, 400)
+for i in range(1500000):
+    szam = random.randint(1, 4000000)
     szamok.append(szam)
     print(szam, end=" ")
 print("")
