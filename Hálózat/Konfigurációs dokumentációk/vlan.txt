@@ -1606,3 +1606,62 @@ access-list 100 deny ip 10.0.0.192 0.0.0.31 10.0.0.0 0.0.0.127
 access-list 100 permit ip any any
 int g0/1.40
 ip access-group 100 in
+
+access-list 102 permit tcp host 192.168.2.2 host 192.168.1.3 eq www
+access-list 102 permit tcp host 192.168.2.3 host 192.168.1.131 eq ftp
+access-list 102 permit udp 192.168.2.0 0.0.0.63 host 192.168.1.131 eq domain
+access-list 102 deny ip 192.168.2.0 0.0.0.63 192.168.1.0 0.0.0.255
+
+access-list 102 permit tcp host 192.168.2.3 host 192.168.1.3 eq ftp
+access-list 102 permit tcp host 192.168.2.3 host 192.168.1.131 eq ftp
+access-list 102 permit tcp host 192.168.2.2 host 192.168.1.131 eq www
+access-list 102 permit udp 192.168.2.0 0.0.0.63 host 192.168.1.131 eq domain
+access-list 102 deny ip 192.168.2.0 0.0.0.63 192.168.1.0 0.0.0.255
+
+permit tcp host 192.168.1.131 any established 
+deny ip host 192.168.1.3 any
+permit ip 192.168.1.0 0.0.0.127 any
+
+permit tcp host 192.168.1.131 any established 
+permit udp host 192.168.1.131 any  
+deny ip host 192.168.1.131 any
+permit ip 192.168.1.128 0.0.0.127 any
+
+
+ip dhcp pool VLAN10pool
+network 192.168.10.0 255.255.255.128
+default-router 192.168.10.1
+dns-server 192.168.10.195
+ip dhcp pool VLAN15pool
+network 192.168.10.128 255.255.255.192
+default-router 192.168.10.129
+dns-server 192.168.10.195
+
+permit tcp host 192.168.10.194 any established 
+permit tcp host 192.168.10.195 any established 
+permit udp host 192.168.10.195 any eq domain 
+
+no ip access-list extended SERVER
+ip access-list extended SERVER
+ permit tcp host 192.168.10.194 any established
+ permit tcp host 192.168.10.195 any established
+ permit udp host 192.168.10.195 any eq 53
+ deny ip any any
+
+no ip access-list extended VLAN
+ip access-list extended VLAN
+ permit tcp 192.168.10.128 0.0.0.63 host 192.168.10.195 eq ftp
+ permit tcp 192.168.10.128 0.0.0.63 host 192.168.10.195 eq www
+ permit tcp 192.168.10.128 0.0.0.63 host 192.168.10.195 eq 443
+ permit udp 192.168.10.128 0.0.0.63 host 192.168.10.195 eq domain
+ deny ip 192.168.10.128 0.0.0.63 192.168.10.192 0.0.0.15
+ permit ip any any
+
+no ip access-list extended PCVLAN
+ip access-list extended PCVLAN
+ permit tcp 192.168.10.1 0.0.0.127 host 192.168.10.194 eq www
+ permit tcp 192.168.10.1 0.0.0.127 host 192.168.10.194 eq 443
+ permit udp 192.168.10.1 0.0.0.127 host 192.168.10.195 eq domain
+ deny ip 192.168.10.1 0.0.0.127 192.168.10.192 0.0.0.15
+ deny icmp 192.168.10.1 0.0.0.127 192.168.10.192 0.0.0.15 echo-reply 
+ permit ip any any
