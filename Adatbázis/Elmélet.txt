@@ -63,3 +63,33 @@ NOT
 
 Spec értékek:
 NULL
+
+Adatbázis tervezés:
+
+Szállítmányozás:
+Megrendelő(MegrendeloId(PK), Név, IrSzam, Település. UtcaHsz)
+
+Gépkocsi(Rendszám(PK), Típus, Raktér, Hengerűrtartalom, Fogyasztás)
+
+Áru(ÁruKódja(PK), Megnevezés, Hossz, Szélesség, Magasság, Súly, Szállítva(FK))
+    Kisszálítás: Szállítva -> Szállítás(SzállításId)
+
+Szállítás(SzállításId(PK), Dátum, Sikeres, Irszam, Település, UtcaHsz, MegrendelőId(FK))
+    Megrendelés: MegrendelőId -> Megrendelő(MegrendeloId)
+
+Használt_jármű(SzállításAzonosító(PK) (FK), GépkocsiRendszám(PK) (FK))
+    SzállításAzonosító --> Szállítás(SzállításId) 
+    GépkocsiRendszám --> Gépkocsi(Rendszám)
+
+Internetes Fórum
+Látogatók(LátogatásId(PK), IPcím, Év, Hónap, Nap)
+
+
+Üzenetek(ÜzenetekId(PK), Kiírta, Év, Hónap, Nap, Tartalom, Témakörök)
+
+
+Témakörök(Id(PK), Név)
+
+
+Felhasználók(FelhasználóId(PK), Vezetéknév, Keresztnév, Jelszó)
+
