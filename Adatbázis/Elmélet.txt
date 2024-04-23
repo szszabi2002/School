@@ -93,3 +93,35 @@ Témakörök(Id(PK), Név)
 
 Felhasználók(FelhasználóId(PK), Vezetéknév, Keresztnév, Jelszó)
 
+
+Országos Ornitológiai Társaság Madarak
+Feljegyzések(FeljegyzésId(PK), Ki_látta, Mikor_látta, Hol_látta, Melyik_madarat_látta, TagkártyaId(FK))
+    TagkártyaId --> Szövetségi_tagok(Tagsági_kártya_szám)
+
+Madár(Gyűrű_száma, Ki_gyűrűzte_meg, Hol_történt _a_gyűrűzés, Faj, Osztály, Alosztály, Rend, FeljegyzésId(FK), TagkártyaId(FK))
+    FeljegyzésId --> Feljegyzések(FeljegyzésId)
+
+Szövetségi_tagok(Tagsági_kártya_szám(PK), Név, Lakcím, Mikor_lett_tag, Meddig_tag)
+    Tagsági_kártya_szám --> Feljegyzések(TagkártyaId)
+    Tagsági_kártya_szám --> Madarak(TagkártyaId)
+
+Online Szakácskönyv
+Hozzávalók(HozzávalóId(PK), Név, Mennyiség)
+
+
+Felhasználók(FelhasználóId(PK), Név, Jelszó )
+
+
+Receptek(ReceptId(PK), Név, Feltöltés_dátuma)
+
+
+Ételek(ÉtelId(PK), Név, Leírása, Elkészítési_időt, Fényképet, ReceptId(FK))
+    ReceptId --> Receptek(ReceptId)
+
+Alapanyagok(ÉtelId(FK), HozzávalóId(FK))
+    ÉtelId --> Ételek(ÉtelId)
+    HozzávalóId --> Hozzávalók(HozzávalóId)
+
+ÉtelFelhasznlók(ReceptId(FK), FelhasználóId(FK))
+    ReceptId --> Receptek(ReceptId)
+    FelhasználóId --> Felhasználók(FelhasználóId)
