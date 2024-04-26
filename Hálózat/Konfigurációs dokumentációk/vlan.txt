@@ -1665,3 +1665,26 @@ ip access-list extended PCVLAN
  deny ip 192.168.10.1 0.0.0.127 192.168.10.192 0.0.0.15
  deny icmp 192.168.10.1 0.0.0.127 192.168.10.192 0.0.0.15 echo-reply 
  permit ip any any
+
+no ip access-list extended SERVER 
+ip access-list extended SERVER 
+permit tcp host 192.168.10.194 any established
+permit tcp host 192.168.10.195 any established
+permit udp host 192.168.10.195 any eq domain
+deny ip any any
+
+access-list 100 permit tcp 192.168.10.128 0.0.0.63 any eq telnet
+ip access-list extended VLAN
+ permit tcp 192.168.10.128 0.0.0.63 host 192.168.10.195 eq ftp
+ permit tcp 192.168.10.128 0.0.0.63 host 192.168.10.195 eq www
+ permit tcp 192.168.10.128 0.0.0.63 host 192.168.10.195 eq 443
+ permit udp 192.168.10.128 0.0.0.63 host 192.168.10.195 eq domain
+ deny ip 192.168.10.128 0.0.0.63 192.168.10.192 0.0.0.15
+ permit ip any any
+ip access-list extended PCVLAN
+ permit tcp 192.168.10.0 0.0.0.127 host 192.168.10.194 eq www
+ permit tcp 192.168.10.0 0.0.0.127 host 192.168.10.194 eq 443
+ permit udp 192.168.10.0 0.0.0.127 host 192.168.10.195 eq domain
+ deny ip 192.168.10.0 0.0.0.127 192.168.10.192 0.0.0.15
+ deny icmp 192.168.10.0 0.0.0.127 any echo-reply
+ permit ip any any
