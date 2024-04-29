@@ -1688,3 +1688,74 @@ ip access-list extended PCVLAN
  deny ip 192.168.10.0 0.0.0.127 192.168.10.192 0.0.0.15
  deny icmp 192.168.10.0 0.0.0.127 any echo-reply
  permit ip any any
+
+ena 
+conf t
+int r f0/1-2
+channel-group 1 mode active
+exi
+int port-channel 1
+sw m t
+
+
+ena
+conf t
+ip dhcp pool VlanE
+network 10.0.0.0 255.255.255.128 
+default-router 10.0.0.1
+dns-server 8.8.8.8
+ip dhcp pool VlanF
+network 10.0.0.128 255.255.255.192
+default-router 10.0.0.129
+dns-server 8.8.8.8
+int g0/0
+ip add 10.0.0.1 255.255.255.128
+int g0/1
+ip add 10.0.0.129 255.255.255.192
+do write
+
+ena
+conf t
+int r f0/10-11
+sw m a
+sw a v 20
+int r f0/23-24
+sw m a
+sw a v 25
+
+ena
+conf t
+
+ip dhcp pool VlanF
+network 10.0.0.128 255.255.255.192
+default-router 10.0.0.129
+dns-server 8.8.8.8
+
+int g0/0
+ip add 10.0.0.129 255.255.255.192
+do write
+
+1, Az R2-re SSH-val belépni csakl az 'A' hálózat gépeiről lehessen. KÉSZ
+
+2, Az 'A' hálózat ne tudja elérni a D hálózatból az 'SRV_2_WEB' HTTPS- szolgáltatását, 
+továbbá az 'SRV_WEB' HTTP szolgáltatását.   KÉSZ
+
+3, Az 'E' hálózat ne érje el az 'F' hálózatot, illetve az 'A' hálózat bal oldali számítógépét. KÉSZ
+
+4, A 'B' hálózat a 'C' hálózat bal oldali számítógén kívül semmit se érjen el a 'C' hálózatból, 
+A 'D' hálózatot ne érje el, illetve az 'F' hálózatból érje el a középső számítógépet, 
+a többi hálózatot érje el.
+no ip access-list extended 101
+ip access-list extended 101
+access-list 101 permit ip 192.168.0.0 0.0.1.255 host 192.168.2.3
+access-list 101 deny ip 192.168.0.0 0.0.1.255 192.168.2.0 0.0.0.255
+access-list 101 deny ip 192.168.0.0 0.0.1.255 192.168.3.0 0.0.0.127
+access-list 101 permit ip 192.168.0.0 0.0.1.255 host 10.0.0.131
+access-list 101 deny ip 192.168.0.0 0.0.1.255 10.0.0.128 0.0.0.63
+access-list 101 deny tcp host 192.168.0.3 any eq telnet
+access-list 101 permit ip any any
+
+
+5, Az R3-ra Telnettel tudjunk belépni, Módosítsuk a megfelelő ACL-t, 
+hogy a 'B' hálózat jobb oldali gépe ne tudjon Telnetezni semelyik ezközre se.
+
