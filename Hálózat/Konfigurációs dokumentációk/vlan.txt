@@ -1820,3 +1820,11 @@ access-list 100 permit ip 192.168.10.0 0.0.0.127 host 195.18.26.2
 access-list 100 permit tcp host 192.168.75.2 host 195.18.26.2 eq www
 access-list 100 permit tcp host 192.168.75.3 host 195.18.26.2 eq 443
 access-list 100 deny ip any any
+
+access-list 1 permit 10.0.3.0 0.0.0.63
+
+access-list 100 deny tcp 10.0.3.0 0.0.0.63 host 50.50.50.1 eq telnet
+access-list 100 deny tcp 10.0.2.0 0.0.0.63 host 50.50.50.2 eq 22
+access-list 100 deny tcp 10.0.0.0 0.0.1.255 host 50.50.50.1 eq telnet
+access-list 100 deny tcp 10.0.0.0 0.0.1.255 host 50.50.50.2 eq 22
+access-list 100 permit ip any any
