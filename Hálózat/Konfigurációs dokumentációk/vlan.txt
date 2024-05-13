@@ -1759,3 +1759,64 @@ access-list 101 permit ip any any
 5, Az R3-ra Telnettel tudjunk belépni, Módosítsuk a megfelelő ACL-t, 
 hogy a 'B' hálózat jobb oldali gépe ne tudjon Telnetezni semelyik ezközre se.
 
+ip dhcp pool VLAN8
+network 10.0.3.0 255.255.255.192
+default-router 10.0.3.1
+dns-server 8.8.8.8
+ip dhcp pool VLAN16
+network 10.0.2.0 255.255.255.0
+default-router 10.0.2.1
+dns-server 8.8.8.8
+ip dhcp pool VLAN24
+network 10.0.0.0 255.255.254.0
+default-router 10.0.0.1
+dns-server 8.8.8.8
+int g0/1
+no sh 
+int g0/1.8
+en d 8
+ip add 10.0.3.1 255.255.255.192
+int g0/1.16
+en d 16
+ip add 10.0.2.1 255.255.255.0
+int g0/1.24
+en d 24
+ip add 10.0.0.1 255.255.254.0
+
+ip domain-name local.hu
+crypto key generate rsa general-keys modulus 1024
+ip ssh v 2
+username admin password cisco
+line vty 0 15
+login local 
+logg synchronous 
+transport input ssh 
+
+
+1. R6-ra SSH csak a 192.168.5.0/24-es hálózatból működjön. Kész
+2. R5-re ssh csak az 'A' hálózatból működjön KÉSZ
+
+3. SRV_WEB HTTP szolgáltatását a 192.168.75.0/26 -os hálózatban levő gép ne érje el, az SRV-FTP FTP 
+szolgáltatását a jobb oldali gép ne érje el, minden más működjön.
+
+access-list 100 deny tcp 192.168.75.0 0.0.0.63 host 172.16.10.5 eq www
+access-list 100 deny tcp host 192.168.75.3 host 172.16.10.8 eq ftp
+access-list 100 permit ip any any
+
+4. SRV_WEB_3 ne legyen elérhető az "A" hálózatnak, deny a
+   a "B" hálózat csak a HTTP szolgáltatást érje el, permit http
+   a 192.168.5.0/24-es hálózat csak a HTTPS szolgáltatást érje el, permit https 
+   a "C" hálózat egyetlen számítógépe ne érje el a szervert, deny c
+   a többi szerver ne tudjon komminikálni ezzel a szerverrel, deny any any
+   a 192.168.10.0/25 érje el a szervert permit host 
+   a 192.168.75.0/26 bal oldali gépe csak a HTTP a jobb oldali gépe csak a HTTPS szolgáltatást érje el
+   EZT az ACL-t az R3-ra helyezzük el. 
+access-list 100 deny ip 10.0.3.0 0.0.0.63 host 195.18.26.2
+access-list 100 deny ip 10.0.0.0 0.0.1.255 host 195.18.26.2
+access-list 100 permit tcp 10.0.2.0 0.0.0.255 host 195.18.26.2 eq www
+access-list 100 permit tcp 192.168.5.0 0.0.0.255 host 195.18.26.2 eq 443
+access-list 100 permit tcp 192.168.5.0 0.0.0.255 host 70.70.70.2 eq 22
+access-list 100 permit ip 192.168.10.0 0.0.0.127 host 195.18.26.2
+access-list 100 permit tcp host 192.168.75.2 host 195.18.26.2 eq www
+access-list 100 permit tcp host 192.168.75.3 host 195.18.26.2 eq 443
+access-list 100 deny ip any any
