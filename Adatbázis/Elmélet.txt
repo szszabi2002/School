@@ -125,3 +125,15 @@ Alapanyagok(ÉtelId(FK), HozzávalóId(FK))
 ÉtelFelhasznlók(ReceptId(FK), FelhasználóId(FK))
     ReceptId --> Receptek(ReceptId)
     FelhasználóId --> Felhasználók(FelhasználóId)
+
+
+Modpack	(modpack_id (PK), name, version, completion_status, minecraft_version_id (FK), short_description, target_audience, difficulty_level)
+    minecraft_version_id -> MinecraftVersions(minecraft_version_id)
+
+Mods (mod_id (PK), name, version)
+
+MinecraftVersions (minecraft_version_id (PK), version_name, release_date)
+
+ModpackMods	(modpack_id (FK), mod_id (FK))	Összetett elsődleges kulcs (modpack_id, mod_id)
+    modpack_id -> Modpack(modpack_id)
+    mod_id -> Mods(mod_id)
