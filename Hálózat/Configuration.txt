@@ -2090,3 +2090,71 @@ exit
 ipv6 unicast-routing 
 ipv6 route 2001:DB8:CAFE::/48 2001:DB8:FEED:77::2
 ip route 0.0.0.0 0.0.0.0 192.168.77.2
+
+
+
+ena
+conf t
+hostname DR
+int s0/0/0 
+ip add 15.15.15.6 255.255.255.252
+no sh 
+int g0/1
+ip add 15.15.15.129 255.255.255.192
+ip ospf priority 255
+no sh
+router ospf 1 
+router-id 1.1.1.1
+network 15.15.15.4 0.0.0.3 area 0
+network 15.15.15.128 0.0.0.63 area 88
+area 100 virtual-link 2.2.2.2 
+
+
+
+
+R1
+ena
+conf t
+hostname R1
+int f0/1.5
+encapsulation dot1Q 5
+ip add 10.0.3.1 255.255.255.192
+no shutdown
+int f0/0 
+ip add 192.168.0.1 255.255.255.0
+no shutdown
+router ospf 1 
+router-id 1.1.1.1
+network 192.168.0.0 0.0.0.255 area 0
+network 10.0.3.0 0.0.0.63 area 0
+
+R2
+ena
+conf t
+hostname R2
+int f0/1
+ip add 10.0.2.1 255.255.255.0
+no shutdown
+int f0/0 
+ip add 192.168.0.2 255.255.255.0
+no shutdown
+router ospf 1 
+router-id 2.2.2.2
+network 192.168.0.0 0.0.0.255 area 0
+network 10.0.2.0 0.0.0.255 area 0
+
+R3
+ena
+conf t
+hostname R3
+int f0/1.10
+encapsulation dot1Q 10
+ip add 10.0.0.1 255.255.254.0
+no shutdown
+int f0/0 
+ip add 192.168.0.3 255.255.255.0
+no shutdown
+router ospf 1 
+router-id 3.3.3.3
+network 192.168.0.0 0.0.0.255 area 0
+network 10.0.0.0 0.0.1.255 area 0
