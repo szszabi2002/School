@@ -1828,3 +1828,265 @@ access-list 100 deny tcp 10.0.2.0 0.0.0.63 host 50.50.50.2 eq 22
 access-list 100 deny tcp 10.0.0.0 0.0.1.255 host 50.50.50.1 eq telnet
 access-list 100 deny tcp 10.0.0.0 0.0.1.255 host 50.50.50.2 eq 22
 access-list 100 permit ip any any
+
+
+ena
+conf t
+hostname R6
+enable secret cisco
+ip domain-name burgundia.local
+username test secret cisco
+crypto key generate rsa general-keys modulus 2048
+ip ssh version 2
+line vty 0 15
+login local
+transport input ssh
+ipv6 unicast-routing 
+ipv6 dhcp pool Vlan10
+add prefix 2001:db8:BBBB:11::/64
+ipv6 dhcp pool Vlan20
+add prefix 2001:db8:BBBB:12::/64
+ip dhcp pool Vlan10
+network 192.168.6.0 255.255.255.128
+default-router 192.168.6.1
+dns-server 8.8.8.8
+ip dhcp pool Vlan20
+network 192.168.6.128 255.255.255.128
+default-router 192.168.6.129
+dns-server 8.8.8.8
+int g0/0
+no sh
+int g0/0.10
+encapsulation dot1Q 10
+ipv6 enable
+ip add 192.168.6.1 255.255.255.128
+ipv6 add 2001:db8:BBBB:11::1/64
+ipv6 dhcp server Vlan10
+int g0/0.20
+encapsulation dot1Q 20
+ipv6 enable
+ip add 192.168.6.129 255.255.255.128
+ipv6 add 2001:db8:BBBB:12::1/64
+ipv6 dhcp server Vlan20
+exit
+int s0/0/0
+ip address 10.0.0.18 255.255.255.252
+ipv6 address 2001:db8:AAAA:56::2/64
+no sh
+int s0/0/1
+ip address 10.0.0.21 255.255.255.252
+ipv6 address 2001:db8:AAAA:67::1/64
+no sh
+exit                                                                                
+router ospf 1
+ router-id 6.6.6.6
+ network 10.0.0.16 0.0.0.3 area 0
+ network 10.0.0.20 0.0.0.3 area 0
+ network 192.168.6.0 0.0.0.127 area 0
+ network 192.168.6.128 0.0.0.127 area 0
+exit
+ipv6 router ospf 1
+ router-id 6.6.6.6
+exit
+interface g0/0.10
+ ipv6 ospf 1 area 0
+exit
+interface g0/0.20
+ ipv6 ospf 1 area 0
+exit
+interface s0/0/0
+ ipv6 ospf 1 area 0
+exit
+interface s0/0/1
+ ipv6 ospf 1 area 0
+exit
+
+Router 4
+int g0/0.10
+encapsulation dot1Q 10
+ipv6 enable
+ip add 192.168.4.1 255.255.255.128
+ipv6 add 2001:db8:BBBB:7::1/64
+int g0/0.20
+encapsulation dot1Q 20
+ipv6 enable
+ip add 192.168.4.129 255.255.255.128
+ipv6 add 2001:db8:BBBB:8::1/64
+exit
+int s0/0/0
+ip address 10.0.0.10 255.255.255.252
+ipv6 address 2001:db8:AAAA:34::2/64
+no sh
+int s0/0/1
+ip address 10.0.0.13 255.255.255.252
+ipv6 address 2001:db8:AAAA:45::1/64
+no sh
+exit                                                                                
+router ospf 1
+ router-id 4.4.4.4
+ network 10.0.0.8 0.0.0.3 area 0
+ network 10.0.0.12 0.0.0.3 area 0
+ network 192.168.4.0 0.0.0.127 area 0
+ network 192.168.4.128 0.0.0.127 area 0
+exit
+ipv6 router ospf 1
+ router-id 4.4.4.4
+exit
+interface g0/0.10
+ ipv6 ospf 1 area 0
+exit
+interface g0/0.20
+ ipv6 ospf 1 area 0
+exit
+interface s0/0/0
+ ipv6 ospf 1 area 0
+exit
+interface s0/0/1
+ ipv6 ospf 1 area 0
+exit
+
+Router 3
+int g0/0.10
+encapsulation dot1Q 10
+ipv6 enable
+ip add 192.168.3.1 255.255.255.128
+ipv6 add 2001:db8:BBBB:5::1/64
+int g0/0.20
+encapsulation dot1Q 20
+ipv6 enable
+ip add 192.168.3.129 255.255.255.128
+ipv6 add 2001:db8:BBBB:6::1/64
+exit
+int s0/0/0
+ip address 10.0.0.9 255.255.255.252
+ipv6 address 2001:db8:AAAA:34::1/64
+no sh
+int s0/0/1
+ip address 10.0.0.6 255.255.255.252
+ipv6 address 2001:db8:AAAA:23::2/64
+no sh
+exit                                                                                
+router ospf 1
+ router-id 3.3.3.3
+ network 10.0.0.4 0.0.0.3 area 0
+ network 10.0.0.8 0.0.0.3 area 0
+ network 192.168.3.0 0.0.0.127 area 0
+ network 192.168.3.128 0.0.0.127 area 0
+exit
+ipv6 router ospf 1
+ router-id 3.3.3.3
+exit
+interface g0/0.10
+ ipv6 ospf 1 area 0
+exit
+interface g0/0.20
+ ipv6 ospf 1 area 0
+exit
+interface s0/0/0
+ ipv6 ospf 1 area 0
+exit
+interface s0/0/1
+ ipv6 ospf 1 area 0
+exit
+
+
+Router 2
+int g0/0.10
+encapsulation dot1Q 10
+ipv6 enable
+ip add 192.168.2.1 255.255.255.128
+ipv6 add 2001:db8:BBBB:3::1/64
+int g0/0.20
+encapsulation dot1Q 20
+ipv6 enable
+ip add 192.168.2.129 255.255.255.128
+ipv6 add 2001:db8:BBBB:4::1/64
+exit
+int s0/0/0
+ip address 10.0.0.2 255.255.255.252
+ipv6 address 2001:db8:AAAA:12::2/64
+no sh
+int s0/0/1
+ip address 10.0.0.5 255.255.255.252
+ipv6 address 2001:db8:AAAA:23::1/64
+no sh
+exit                                                                                
+router ospf 1
+ router-id 2.2.2.2
+ network 10.0.0.0 0.0.0.3 area 0
+ network 10.0.0.4 0.0.0.3 area 0
+ network 192.168.2.0 0.0.0.127 area 0
+ network 192.168.2.128 0.0.0.127 area 0
+exit
+ipv6 router ospf 1
+ router-id 2.2.2.2
+exit
+interface g0/0.10
+ ipv6 ospf 1 area 0
+exit
+interface g0/0.20
+ ipv6 ospf 1 area 0
+exit
+interface s0/0/0
+ ipv6 ospf 1 area 0
+exit
+interface s0/0/1
+ ipv6 ospf 1 area 0
+exit
+
+Router 1
+int g0/0.10
+encapsulation dot1Q 10
+ipv6 enable
+ip add 192.168.1.1 255.255.255.128
+ipv6 add 2001:db8:BBBB:1::1/64
+int g0/0.20
+encapsulation dot1Q 20
+ipv6 enable
+ip add 192.168.1.129 255.255.255.128
+ipv6 add 2001:db8:BBBB:2::1/64
+exit
+int s0/0/0
+ip address 10.0.0.1 255.255.255.252
+ipv6 address 2001:db8:AAAA:12::1/64
+no sh
+exit                                                                                
+router ospf 1
+ router-id 1.1.1.1
+ network 10.0.0.0 0.0.0.3 area 0
+ network 192.168.1.0 0.0.0.127 area 0
+ network 192.168.1.128 0.0.0.127 area 0
+exit
+ipv6 router ospf 1
+ router-id 1.1.1.1
+exit
+interface g0/0.10
+ ipv6 ospf 1 area 0
+exit
+interface g0/0.20
+ ipv6 ospf 1 area 0
+exit
+interface s0/0/0
+ ipv6 ospf 1 area 0
+exit
+
+hostname R4
+ipv6 unicast-routing
+no ip domain-lookup
+line con 0
+logging synchronous
+exec-timeout 0 0
+interface Serial0/0/0
+ip address 192.168.77.1 255.255.255.0
+ipv6 address FE80::4 link-local
+ipv6 address 2001:DB8:FEED:77::1/64
+no shutdown
+exit
+interface gigabitethernet 0/0
+ip address 192.168.99.1 255.255.255.0
+ipv6 address 2001:db8:99:1::1/64 
+no shutdown
+exit
+ipv6 unicast-routing 
+ipv6 route 2001:DB8:CAFE::/48 2001:DB8:FEED:77::2
+ip route 0.0.0.0 0.0.0.0 192.168.77.2
