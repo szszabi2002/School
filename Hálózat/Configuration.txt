@@ -2171,3 +2171,69 @@ access-list 101 deny icmp 10.40.0.0 0.0.0.255 10.20.0.0 0.0.0.255 echo
 access-list 101 deny icmp 10.40.0.0 0.0.0.255 10.30.0.0 0.0.0.255 echo
 access-list 101 permit any any
 
+R2:
+interface S0/0/0
+ ip address 200.200.200.2 255.255.255.252
+ no shutdown
+
+interface S0/0/1
+ ip address 200.200.200.5 255.255.255.252
+ no shutdown
+
+ip route 192.168.10.0 255.255.255.0 200.200.200.1
+ip route 192.168.20.0 255.255.255.0 200.200.200.6
+
+R1:
+interface GigabitEthernet0/0
+ ip address 192.168.10.1 255.255.255.0
+ ip nat inside
+ no shutdown
+
+interface S0/0/0
+ ip address 200.200.200.1 255.255.255.252
+ ip nat outside
+ no shutdown
+
+ip nat inside source static 192.168.10.2 200.200.200.2
+
+interface Tunnel0
+ ip address 172.16.1.1 255.255.255.248
+ tunnel source S0/0/0
+ tunnel destination 200.200.200.6
+ip route 192.168.20.0 255.255.255.0 172.16.1.2
+
+ R3:
+ interface GigabitEthernet0/0
+ ip address 192.168.20.1 255.255.255.0
+ ip nat inside
+ no shutdown
+
+interface S0/0/1
+ ip address 200.200.200.6 255.255.255.252
+ ip nat outside
+ no shutdown
+
+ip nat inside source static 192.168.20.2 200.200.200.5
+interface Tunnel0
+ ip address 172.16.1.2 255.255.255.248
+ tunnel source S0/0/1
+ tunnel destination 200.200.200.1
+ip route 192.168.10.0 255.255.255.0 172.16.1.1
+
+
+hostname R2
+
+ip cef
+
+interface Serial0/0/0
+ ip address 200.200.200.2 255.255.255.252
+ no shutdown
+
+interface Serial0/0/1
+ ip address 200.200.200.5 255.255.255.252
+ clock rate 2000000
+ no shutdown
+
+ip route 192.168.10.0 255.255.255.0 200.200.200.1
+ip route 192.168.20.0 255.255.255.0 200.200.200.6
+
