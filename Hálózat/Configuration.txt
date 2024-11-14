@@ -2237,3 +2237,32 @@ interface Serial0/0/1
 ip route 192.168.10.0 255.255.255.0 200.200.200.1
 ip route 192.168.20.0 255.255.255.0 200.200.200.6
 
+
+ena
+conf t
+hostname R3
+ip domain-name ccnasecurity.com
+no ip domain-lookup
+service password-encryption
+security passwords min-length 10
+enable secret cisco12345
+username admin01 secret admin01pass
+int g0/1
+ip add 192.168.3.1 255.255.255.0
+no sh
+int s0/0/1
+ip add 10.2.2.1 255.255.255.252
+no sh
+router ospf 101
+network 192.168.3.0 0.0.0.255 area 0
+network 10.2.2.0 0.0.0.3 area 0
+line con 0
+login local
+logg synchronous
+exec-timeout 5
+crypto key generate rsa general-keys modulus 1024
+ip ssh ver 2
+line vty 0 15
+login local
+logg sy
+tr in ssh
