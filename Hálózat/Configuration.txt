@@ -2266,3 +2266,112 @@ line vty 0 15
 login local
 logg sy
 tr in ssh
+
+
+R1
+ena
+conf t
+hostname R1
+no ip domain-lookup
+enable secret ciscoenpass
+line con 0
+password ciscoconpass
+exit
+security passwords min-length 10
+service password-encryption
+banner motd #Unauthorized Access is Prohibited#
+int g0/0/0
+description Connection to R2
+ip add 198.54.100.1 255.255.255.252
+no sh
+int g0/0/1
+description Connection to S2
+ip add 192.168.1.1 255.255.255.0
+no sh
+int g0/0/2
+description Connection to S1
+ip add 64.100.1.1 255.255.255.248
+no sh
+exit
+ip domain name ccna-lab.com
+username admin secret admin1pass
+line vty 0 15
+login local
+transport input ssh
+exit
+crypto key generate rsa general-keys modulus 1024
+ip ssh version 2
+
+R2
+ena
+conf t
+hostname R2
+no ip domain-lookup
+enable secret ciscoenpass
+line con 0
+password ciscoconpass
+exit
+security passwords min-length 10
+service password-encryption
+banner motd #Unauthorized Access is Prohibited#
+int g0/0/0
+description Connection to R1
+ip add 198.51.100.2 255.255.255.252
+no sh
+int g0/0/1
+description Connection to S4
+ip add 172.16.2.1 255.255.255.0
+no sh
+int g0/0/2
+description Connection to S3
+ip add 209.165.202.129 255.255.255.224
+no sh
+exit
+ip domain name ccna-lab.com
+username admin secret admin1pass
+line vty 0 15
+login local
+transport input ssh
+exit
+crypto key generate rsa general-keys modulus 1024
+ip ssh version 2
+
+S1
+ena
+conf t
+hostname S1
+int Vlan1
+ip add 64.100.1.2 255.255.255.248
+no sh
+exit
+ip default-gateway 64.100.1.1
+
+S2
+ena
+conf t
+hostname S2
+int Vlan1
+ip add 192.168.1.2 255.255.255.0
+no sh
+exit
+ip default-gateway 192.168.1.1
+
+S3
+ena
+conf t
+hostname S3
+int Vlan1
+ip add 209.165.202.130 255.255.255.224
+no sh
+exit
+ip default-gateway 209.165.202.129
+
+S4
+ena
+conf t
+hostname S4
+int Vlan1
+ip add 172.16.2.2 255.255.255.0
+no sh
+exit
+ip default-gateway 172.16.2.1
