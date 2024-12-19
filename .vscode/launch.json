@@ -1,7 +1,12 @@
 {
     "configurations": [
-        
-
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
         {
             "name": ".NET Core Attach",
             "type": "coreclr",
@@ -13,6 +18,5 @@
             "request": "launch",
             "projectPath": "${workspaceFolder}/<relative-path-to-project-folder><project-name>.csproj"
         }
-    
     ]
 }
