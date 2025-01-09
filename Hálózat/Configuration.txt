@@ -2375,3 +2375,25 @@ ip add 172.16.2.2 255.255.255.0
 no sh
 exit
 ip default-gateway 172.16.2.1
+
+
+
+Netmiko setup:
+ena
+conf t
+hostname S1
+ip domain-name burgundia.local
+username admin secret password
+no ip domain-lookup
+enable secret cisco
+ip ssh version 2
+crypto key generate rsa general-keys modulus 1024
+line vty 0 15
+login local
+transport input ssh
+exit
+int vlan 1
+ip add 192.168.1.1 255.255.255.0
+no sh
+int f0/1
+no sh
