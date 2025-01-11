@@ -1,12 +1,22 @@
 {
     "configurations": [
         {
-            "name": "Python: Current File",
-            "type": "python",
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
             "request": "launch",
             "program": "${file}",
-            "console": "integratedTerminal",
-            "justMyCode": true
+            "console": "integratedTerminal"
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        },
+        {
+            "name": "C#: <project-name> Debug",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/<relative-path-to-project-folder><project-name>.csproj"
         }
     ]
 }
