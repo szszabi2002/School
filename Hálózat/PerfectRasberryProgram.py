@@ -608,3 +608,7 @@ if __name__ == "__main__":
         asyncio.run(main())
     except KeyboardInterrupt:
         logger.info("KeyboardInterrupt received; shutting down.")
+        shutdown_event.set()
+    except Exception as e:
+        logger.error(f"An error occurred: {e}")
+        shutdown_event.set()
