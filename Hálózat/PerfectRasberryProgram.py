@@ -16,6 +16,16 @@ logger = logging.getLogger(__name__)
 # Global shutdown event
 shutdown_event = threading.Event()
 
+# Globals for joystick navigation and port mapping.
+cursor_x = 0
+cursor_y = 0
+port_mapping = {}  # Maps (col, row) -> port name
+port_status_map = {}  # Maps port name -> boolean state (True if port is up)
+
+# Globals for switch connection and Sense HAT
+switch_conn = None
+sense = None
+
 
 # --------------------------
 # Connection Management
@@ -50,7 +60,7 @@ def connect_to_switch(
 # --------------------------
 def get_connected_port(net_connect: ConnectHandler) -> str:
     """
-    Identify the port used by the Raspberry Pi.
+    Identify the port that the Raspberry Pi is using.
     """
     try:
         show_ip_output = net_connect.send_command("show ip interface brief")
@@ -95,7 +105,7 @@ def manage_ports(net_connect: ConnectHandler, ports: list, action: str, pi_port:
 
 def manage_all_ports(net_connect: ConnectHandler, action: str, pi_port: str):
     """
-    Retrieve all port names from the switch and apply the action.
+    Retrieve all ports and apply an action.
     """
     try:
         output = net_connect.send_command("show interfaces status")
@@ -114,9 +124,49 @@ def manage_all_ports(net_connect: ConnectHandler, action: str, pi_port: str):
         logger.error("Error managing all ports: %s", e)
 
 
+def toggle_port_state(net_connect: ConnectHandler, port: str, action: str):
+    """
+    Toggle the state of a single port.
+    If action is "up", send 'no shutdown' (enable the port);
+    if "down", send 'shutdown' (disable the port).
+    """
+    try:
+        if action == "up":
+            cmd = "no shutdown"
+            desc = "ENABLED_PORT"
+        else:
+            cmd = "shutdown"
+            desc = "DISABLED_PORT"
+        cmds = [f"interface {port}", cmd, f"description {desc}"]
+        net_connect.send_config_set(cmds)
+        net_connect.save_config()
+        logger.info(
+            "Port %s set to %s", port, "enabled" if action == "up" else "disabled"
+        )
+    except Exception as e:
+        logger.error("Error toggling port %s: %s", port, e)
+
+
+def get_port_lists(net_connect: ConnectHandler):
+    """
+    Extract lists of fast and gigabit ports from the switch.
+    """
+    output = net_connect.send_command("show interfaces status")
+    fast_ports = []
+    giga_ports = []
+    for line in output.splitlines():
+        if "FastEthernet" in line:
+            port = line.split()[0].replace("Fa", "FastEthernet")
+            fast_ports.append(port)
+        elif "GigabitEthernet" in line:
+            port = line.split()[0].replace("Gi", "GigabitEthernet")
+            giga_ports.append(port)
+    return fast_ports, giga_ports
+
+
 def port_management_loop(switch_params: dict):
     """
-    Interactive loop for port management.
+    Interactive loop for managing ports via the console.
     """
     net_connect = connect_to_switch(**switch_params)
     if net_connect is None:
@@ -170,40 +220,37 @@ def port_management_loop(switch_params: dict):
             break
         else:
             logger.info("Invalid option, please try again.")
-
     net_connect.disconnect()
-    logger.info("Port management terminated.")
+    logger.info("Port management loop terminated.")
 
 
 # --------------------------
-# Sense HAT Display Functions
+# Sense HAT Display & Joystick Functions
 # --------------------------
-# Define LED color constants
-GREEN = (0, 255, 0)
-RED = (255, 0, 0)
-BLUE = (0, 0, 255)
+# Color Definitions
+GREEN = (0, 255, 0)  # Port enabled/up
+RED = (255, 0, 0)  # Port disabled/down
+BLUE = (0, 0, 255)  # Static/separator rows
 OFF = (0, 0, 0)
 YELLOW = (255, 255, 0)
-WHITE = (255, 255, 255)
-
-# Define an 8x8 Among Us character (values represent colors)
-among_us_character = [
-    [0, 0, 0, 1, 1, 1, 0, 0],
-    [0, 0, 1, 1, 2, 2, 2, 0],
-    [0, 1, 1, 2, 2, 2, 2, 2],
-    [0, 1, 1, 1, 2, 2, 2, 0],
-    [0, 1, 1, 1, 1, 1, 1, 0],
-    [0, 1, 1, 1, 1, 1, 1, 0],
-    [0, 0, 1, 1, 1, 1, 1, 0],
-    [0, 0, 1, 1, 0, 1, 1, 0],
-]
-among_us_colors = {0: YELLOW, 1: RED, 2: WHITE}
+WHITE = (255, 255, 255)  # Used for cursor overlay
 
 
 def create_infinite_scroll(offset: int) -> list:
     """
-    Compute the LED matrix based on an offset for scrolling animation.
+    Generate a simple scrolling animation using an Among Us character.
     """
+    among_us_character = [
+        [0, 0, 0, 1, 1, 1, 0, 0],
+        [0, 0, 1, 1, 2, 2, 2, 0],
+        [0, 1, 1, 2, 2, 2, 2, 2],
+        [0, 1, 1, 1, 2, 2, 2, 0],
+        [0, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 0],
+        [0, 0, 1, 1, 1, 1, 1, 0],
+        [0, 0, 1, 1, 0, 1, 1, 0],
+    ]
+    among_us_colors = {0: YELLOW, 1: RED, 2: WHITE}
     character_width = 8
     return [
         among_us_colors[among_us_character[row][(col - offset) % character_width]]
@@ -212,84 +259,132 @@ def create_infinite_scroll(offset: int) -> list:
     ]
 
 
-def get_interface_status(net_connect: ConnectHandler) -> str:
-    """
-    Retrieve the interface status via a Netmiko command.
-    """
-    try:
-        return net_connect.send_command("show ip interface brief")
-    except Exception as e:
-        logger.error("Error retrieving interface status: %s", e)
-        return None
-
-
 def parse_interface_status(status_output: str):
     """
-    Parse interface status to extract the up/down state of ports.
+    Extract boolean status (up/down) for FastEthernet and GigabitEthernet ports.
     """
-    fast_ethernet = []
-    gigabit_ethernet = []
+    fast_eth = []
+    giga_eth = []
     for line in status_output.splitlines():
         if "FastEthernet" in line:
             parts = line.split()
             if len(parts) >= 5:
-                fast_ethernet.append("up" in parts[4].lower())
+                fast_eth.append("up" in parts[4].lower())
         elif "GigabitEthernet" in line:
             parts = line.split()
             if len(parts) >= 5:
-                gigabit_ethernet.append("up" in parts[4].lower())
-    return fast_ethernet, gigabit_ethernet
+                giga_eth.append("up" in parts[4].lower())
+    return fast_eth, giga_eth
 
 
-def update_led_matrix(sense: SenseHat, fast_eth: list, giga_eth: list):
+def update_led_matrix(
+    sense: SenseHat, fast_eth: list, giga_eth: list, fast_ports: list, giga_ports: list
+) -> list:
     """
-    Update the Sense HAT LED matrix based on the current interface statuses.
+    Build the LED matrix based on current port statuses.
+    Also populate the global port_mapping and port_status_map.
+    Fast Ethernet ports are displayed on rows 1, 3, 5 and Gigabit Ethernet on row 7.
     """
+    global port_mapping, port_status_map
+    port_mapping.clear()
+    port_status_map.clear()
     pixels = []
-    fe_index = ge_index = gehe_index = 0
+    fe_index = 0
+    giga_index = 0
     for row in range(8):
         for col in range(8):
             if row in {0, 2, 4}:
+                # Static indicator row
                 pixels.append(BLUE)
             elif row in {1, 3, 5}:
                 if fe_index < len(fast_eth):
-                    pixels.append(GREEN if fast_eth[fe_index] else RED)
+                    state = fast_eth[fe_index]
+                    color = GREEN if state else RED
+                    pixels.append(color)
+                    port = fast_ports[fe_index]
+                    port_mapping[(col, row)] = port
+                    port_status_map[port] = state
                     fe_index += 1
                 else:
                     pixels.append(OFF)
             elif row == 6:
-                if gehe_index < len(giga_eth):
-                    pixels.append(YELLOW)
-                    gehe_index += 1
-                else:
-                    pixels.append(OFF)
+                pixels.append(BLUE)
             elif row == 7:
-                if ge_index < len(giga_eth):
-                    pixels.append(GREEN if giga_eth[ge_index] else RED)
-                    ge_index += 1
+                if giga_index < len(giga_eth):
+                    state = giga_eth[giga_index]
+                    color = GREEN if state else RED
+                    pixels.append(color)
+                    port = giga_ports[giga_index]
+                    port_mapping[(col, row)] = port
+                    port_status_map[port] = state
+                    giga_index += 1
                 else:
                     pixels.append(OFF)
-    sense.set_pixels(pixels)
+    return pixels
+
+
+def draw_cursor(pixels: list, cx: int, cy: int) -> list:
+    """
+    Overlay a white pixel (cursor) on the LED matrix.
+    """
+    new_pixels = pixels.copy()
+    index = cy * 8 + cx
+    if 0 <= index < len(new_pixels):
+        new_pixels[index] = WHITE
+    return new_pixels
 
 
 def joystick_callback(event):
     """
-    Handle joystick events on the Sense HAT.
+    Handle joystick events:
+      - Arrow keys update the global cursor position.
+      - Middle press toggles the port state at the current cell.
     """
-    if event.action == "pressed":
-        logger.info("Joystick %s pressed", event.direction)
-        # Extend functionality as needed
+    global cursor_x, cursor_y, switch_conn
+    if event.action != "pressed":
+        return
+
+    if event.direction == "middle":
+        port = port_mapping.get((cursor_x, cursor_y))
+        if port and switch_conn:
+            current_state = port_status_map.get(
+                port, True
+            )  # Default to 'up' if not mapped
+            if current_state:
+                logger.info("Toggling port %s: Disabling", port)
+                toggle_port_state(switch_conn, port, "down")
+            else:
+                logger.info("Toggling port %s: Enabling", port)
+                toggle_port_state(switch_conn, port, "up")
+        else:
+            logger.info("No port assigned to cell (%d, %d)", cursor_x, cursor_y)
+    elif event.direction == "up":
+        if cursor_y > 0:
+            cursor_y -= 1
+    elif event.direction == "down":
+        if cursor_y < 7:
+            cursor_y += 1
+    elif event.direction == "left":
+        if cursor_x > 0:
+            cursor_x -= 1
+    elif event.direction == "right":
+        if cursor_x < 7:
+            cursor_x += 1
+
+    logger.info("Cursor moved to (%d, %d)", cursor_x, cursor_y)
 
 
 def monitor_loop(switch_params: dict, low_light: bool):
     """
-    Continuously monitor the switch and update the Sense HAT display.
+    Continuously monitor the switch, updating the Sense HAT LED matrix
+    and handling joystick events.
     """
+    global switch_conn, sense, cursor_x, cursor_y
     net_connect = connect_to_switch(**switch_params)
     if not net_connect:
         return
+    switch_conn = net_connect
     sense = SenseHat()
-    # Set low light mode to reduce LED brightness
     sense.low_light = low_light
     sense.clear()
     sense.stick.direction_any = joystick_callback
@@ -300,14 +395,17 @@ def monitor_loop(switch_params: dict, low_light: bool):
     animation_offset = 0
 
     while not shutdown_event.is_set():
-        status_output = get_interface_status(net_connect)
+        status_output = net_connect.send_command("show ip interface brief")
         if status_output:
-            current_fe, current_ge = parse_interface_status(status_output)
-            current_status = (current_fe, current_ge)
+            fast_eth, giga_eth = parse_interface_status(status_output)
+            fast_ports, giga_ports = get_port_lists(net_connect)
+            current_status = (fast_eth, giga_eth)
             if current_status != previous_status:
                 last_change = datetime.now()
                 animation_mode = False
-                update_led_matrix(sense, current_fe, current_ge)
+                pixels = update_led_matrix(
+                    sense, fast_eth, giga_eth, fast_ports, giga_ports
+                )
                 logger.info("Display updated with new status")
             else:
                 elapsed = (datetime.now() - last_change).total_seconds()
@@ -315,14 +413,25 @@ def monitor_loop(switch_params: dict, low_light: bool):
                     animation_mode = True
                     logger.info("Switching to animation mode")
                 if animation_mode:
-                    sense.set_pixels(create_infinite_scroll(animation_offset))
+                    # Use a scrolling animation if no change detected
+                    pixels = create_infinite_scroll(animation_offset)
                     animation_offset = (animation_offset + 1) % 8
                     time.sleep(0.1)
+                    previous_status = current_status
+                    # Overlay cursor and update display before next iteration
+                    pixels = draw_cursor(pixels, cursor_x, cursor_y)
+                    sense.set_pixels(pixels)
                     continue
                 else:
-                    update_led_matrix(sense, current_fe, current_ge)
-                    time.sleep(5)
+                    pixels = update_led_matrix(
+                        sense, fast_eth, giga_eth, fast_ports, giga_ports
+                    )
             previous_status = current_status
+
+            # Overlay cursor on current LED matrix and display
+            pixels_with_cursor = draw_cursor(pixels, cursor_x, cursor_y)
+            sense.set_pixels(pixels_with_cursor)
+            time.sleep(1)
         else:
             time.sleep(5)
     net_connect.disconnect()
@@ -335,7 +444,7 @@ def monitor_loop(switch_params: dict, low_light: bool):
 # --------------------------
 def main():
     parser = argparse.ArgumentParser(
-        description="Refactored Cisco Switch Manager with Sense HAT Display"
+        description="Cisco Switch Manager with Sense HAT Display and Joystick Port Control"
     )
     parser.add_argument("--host", default="192.168.1.4", help="Switch IP address")
     parser.add_argument("--username", default="admin", help="Username for the switch")
@@ -343,7 +452,7 @@ def main():
     parser.add_argument(
         "--secret", default="cisco", help="Enable secret for the switch"
     )
-    # Use --no_low_light to disable low light mode; by default, low light is enabled.
+    # Use --no_low_light to disable LED dimming; by default, low light is enabled.
     parser.add_argument(
         "--no_low_light",
         action="store_false",
@@ -360,7 +469,7 @@ def main():
         "secret": args.secret,
     }
 
-    # Start the port management and monitor loops in separate threads.
+    # Start both the interactive console port management loop and the continuously running monitor loop.
     port_thread = threading.Thread(
         target=port_management_loop, args=(switch_params,), daemon=True
     )
