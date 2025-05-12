@@ -4,9 +4,9 @@ from netmiko import ConnectHandler
 def connect_to_switch():
     cisco_switch = {
         "device_type": "cisco_ios",
-        "host": "192.168.1.1",  # Replace with your switch IP
+        "host": "192.168.1.4",  # Replace with your switch IP
         "username": "admin",
-        "password": "password",
+        "password": "admin",
         "secret": "cisco",
         "port": 22,
     }

@@ -1,5 +1,5 @@
 cisco_ios:
   platform: cisco_ios
   username: admin
-  password: password
+  password: admin
   secret: cisco

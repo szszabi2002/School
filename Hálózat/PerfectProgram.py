@@ -36,12 +36,11 @@ among_us_colors = {
 # Switch connection parameters
 cisco_switch = {
     "device_type": "cisco_ios",
-    "host": "192.168.1.1",
+    "host": "192.168.1.4",  # Replace with your switch IP
     "username": "admin",
-    "password": "password",
+    "password": "admin",
     "secret": "cisco",
     "port": 22,
-    "fast_cli": False,
 }
 
 
